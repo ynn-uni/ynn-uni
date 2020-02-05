@@ -1,0 +1,62 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "肿瘤医院"
+			}
+		}
+	    ,{
+            "path" : "pages/news/news",
+            "style" : {
+				"navigationBarTitleText": "新闻资讯"
+			}
+        }
+        ,{
+            "path" : "pages/recruit/recruit",
+            "style" : {
+				"navigationBarTitleText": "征募报名"
+			}
+        }
+        ,{
+            "path" : "pages/my/my",
+            "style" : {
+				"navigationBarTitleText": "我的"
+			}
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "肿瘤医院",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+	    "color": "#4A4A4A",
+	    "selectedColor": "#4A4A4A",
+	    "borderStyle": "black",
+	    "backgroundColor": "#ffffff",
+		"fontSize":"12upx",
+	    "list": [{
+	        "pagePath": "pages/home/home",
+	        "iconPath": "static/images/home.jpg",
+	        "selectedIconPath": "static/images/home_active.jpg",
+	        "text": "首页"
+	    }, {
+	        "pagePath": "pages/recruit/recruit",
+	        "iconPath": "static/images/recruit.jpg",
+	        "selectedIconPath": "static/images/recruit_active.jpg",
+	        "text": "征募报名"
+	    },{
+	        "pagePath": "pages/news/news",
+	        "iconPath": "static/images/news.jpg",
+	        "selectedIconPath": "static/images/news_active.jpg",
+	        "text": "新闻资讯"
+	    },{
+	        "pagePath": "pages/my/my",
+	        "iconPath": "static/images/my.jpg",
+	        "selectedIconPath": "static/images/my_active.jpg",
+	        "text": "我的"
+	    }]
+	}
+}
