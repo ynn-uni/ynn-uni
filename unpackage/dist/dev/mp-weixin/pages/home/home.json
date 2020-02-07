@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "药牛牛",
-  "usingComponents": {
-    "swiper": "/pages/home/components/swiper",
-    "recruit": "/pages/home/components/recruit",
-    "news": "/pages/home/components/news"
-  }
-}
