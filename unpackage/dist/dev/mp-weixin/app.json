@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/home/home",
     "pages/news/news",
     "pages/recruit/recruit",
@@ -16,7 +17,7 @@
     "color": "#4A4A4A",
     "selectedColor": "#4A4A4A",
     "borderStyle": "black",
-    "backgroundColor": "#ffffff",
+    "backgroundColor": "#F8F8F8",
     "fontSize": "12upx",
     "list": [
       {
@@ -45,5 +46,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap21.json"
 }

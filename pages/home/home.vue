@@ -1,15 +1,25 @@
 <template>
 	<view class="home">
-		home
+		<Swiper></Swiper>
+		<Recruit></Recruit>
+		<News></News>
 	</view>
 </template>
 
 <script>
+	import Swiper from "./components/swiper"
+	import Recruit from "./components/recruit"
+	import News from "./components/news"
 	export default {
 		data() {
 			return {
 				
 			}
+		},
+		components:{
+			Swiper,
+			Recruit,
+			News
 		},
 		onLoad() {
 
@@ -20,6 +30,8 @@
 	}
 </script>
 
-<style>
-	
+<style lang="scss" scoped>
+	.home{
+		background-color: #fff;
+	}
 </style>

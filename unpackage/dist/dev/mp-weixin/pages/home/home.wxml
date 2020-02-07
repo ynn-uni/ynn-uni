@@ -1,1 +1,1 @@
-<view class="home">home</view>
+<view class="home data-v-32b8b9e3"><swiper class="data-v-32b8b9e3"></swiper><recruit vue-id="1" class="data-v-32b8b9e3" bind:__l="__l"></recruit><news vue-id="2" class="data-v-32b8b9e3" bind:__l="__l"></news></view>
