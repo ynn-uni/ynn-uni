@@ -109,5 +109,8 @@
 <style lang="scss" scoped>
 	.apply {
 		min-height: 100vh;
+		.apply-list .action {
+			padding-right: 30rpx;
+		}
 	}
 </style>
