@@ -1,7 +1,7 @@
 <template>
 	<view class="pannel pannel-shadow grid col-3">
 		<view v-for="(item, index) in btnList" :key="index">
-			<navigator class="pannel-button flex flex-direction text-center">
+			<navigator :url="item.path" class="pannel-button flex flex-direction text-center" >
 				<image :src="'../../../static/icons/' + item.icon + '.png'"></image>
 				<text class="text-xs">{{ item.label }}</text>
 			</navigator>
@@ -16,27 +16,27 @@
 			return {
 				btnList:[
 					{
-						path: '',
+						path: '/pages/my/projects',
 						icon: 'my-list',
 						label: '项目管理'
 					}, {
-						path: '',
+						path: '/pages/my/apply',
 						icon: 'my-apply',
 						label: '试验申请'
 					}, {
-						path: '',
+						path: '/pages/my/link',
 						icon: 'my-link',
 						label: '家属绑定'
 					}, {
-						path: '',
+						path: '/pages/my/about',
 						icon: 'my-about',
 						label: '关于我们'
 					}, {
-						path: '',
+						path: '/pages/my/contact',
 						icon: 'my-contact',
-						label: '关于我们'
+						label: '联系我们'
 					}, {
-						path: '',
+						path: '/pages/my/setting',
 						icon: 'my-setting',
 						label: '设置'
 					}
