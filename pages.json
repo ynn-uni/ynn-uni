@@ -31,8 +31,27 @@
             "style" : {
 				"navigationBarTitleText": "我的"
 			}
-        }
-        
+		}, {
+			"path": "pages/my/about",
+			"style": {
+				"navigationBarTitleText": "关于我们"
+			}
+		}, {
+			"path": "pages/my/contact",
+			"style": {
+				"navigationBarTitleText": "联系我们"
+			}
+		}, {
+			"path": "pages/my/apply",
+			"style": {
+				"navigationBarTitleText": "试验申请"
+			}
+		}, {
+			"path": "pages/my/projects",
+			"style": {
+				"navigationBarTitleText": "项目管理"
+			}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

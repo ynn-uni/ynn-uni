@@ -49,7 +49,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.person {
 		position: relative;
 		.person-avatar {

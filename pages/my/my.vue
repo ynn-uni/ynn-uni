@@ -7,9 +7,9 @@
 </template>
 
 <script>
-	import Person from './component/person.vue'
-	import Record from './component/record.vue'
-	import Pannel from './component/pannel.vue'
+	import Person from './components/person.vue'
+	import Record from './components/record.vue'
+	import Pannel from './components/pannel.vue'
 	
 	export default {
 		components: {
@@ -28,7 +28,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 .my-page {
 	min-height: 100vh;
 	padding-left: 40rpx;
