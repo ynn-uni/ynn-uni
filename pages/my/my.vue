@@ -28,7 +28,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss" scoped>
 .my-page {
 	min-height: 100vh;
 	padding-left: 40rpx;

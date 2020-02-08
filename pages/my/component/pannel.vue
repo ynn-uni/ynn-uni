@@ -46,7 +46,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.pannel {
 		margin-top: 20rpx;
 		padding-top: 20rpx;
