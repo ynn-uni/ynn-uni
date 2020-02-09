@@ -22,12 +22,12 @@
 				</button>
 				<view class="action-label text-sm">健康档案</view>
 			</view>
-			<view class="action-button text-center">
+			<navigator class="action-button text-center" url="/pages/message/list">
 				<button class="cu-btn cuIcon lg">
 					<image src="../../../static/icons/my-message.png"></image>
 				</button>
 				<view class="action-label text-sm">我的消息</view>
-			</view>
+			</navigator>
 			<view class="action-button text-center">
 				<button class="cu-btn cuIcon lg">
 					<image src="../../../static/icons/my-todo.png"></image>
