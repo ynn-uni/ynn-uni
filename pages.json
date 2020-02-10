@@ -1,32 +1,54 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		// {
-		// 	"path": "pages/",
+		// 	"path": "pages",
 		// 	"style": {
 		// 		"navigationBarTitleText": "当前开发页"
 		// 	}
 		// },
+		 {
+		 	"path": "pages/login/login",
+		 	"style": {
+		 		"navigationBarTitleText": "药牛牛"
+		 	}
+		 }, {
+		 	"path": "pages/home/home",
+		 	"style": {
+		 		"navigationBarTitleText": "药牛牛"
+		 	}
+		 }, 
 		{
-			"path": "pages/login/login",
+			"path": "pages/recruit/application",
+			"style": {
+				"navigationBarTitleText": "申请免费用药"
+			}
+		},
+		{
+			"path": "pages/recruit/treaty",
 			"style": {
 				"navigationBarTitleText": "药牛牛"
 			}
-		}, {
-			"path": "pages/home/home",
+		},
+		{
+			"path": "pages/recruit/rec_detail",
 			"style": {
-				"navigationBarTitleText": "药牛牛"
+				"navigationBarTitleText": "招募详情"
 			}
-		}, {
-			"path": "pages/news/news",
-			"style": {
-				"navigationBarTitleText": "新闻资讯"
-			}
-		}, {
+		},{
 			"path": "pages/recruit/recruit",
 			"style": {
 				"navigationBarTitleText": "征募报名"
 			}
-		}, {
+		},
+		
+		{
+			"path": "pages/news/news",
+			"style": {
+				"navigationBarTitleText": "新闻资讯"
+			}
+		}, 
+		
+		{
 			"path": "pages/my/my",
 			"style": {
 				"navigationBarTitleText": "我的"

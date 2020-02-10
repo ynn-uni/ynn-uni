@@ -12,7 +12,7 @@
 		</view>
 		<image class="rec_img" src="../../../static/images/home_rec.png" mode=""></image>
 		<view class="list">
-			<view class="item" v-for="(item,index) in list" :key="index">
+			<view class="item" v-for="(item,index) in list" :key="index" @click="handelRecDetail(index)">
 				<image class="my-bg" src="../../../static/images/home_li.png" mode=""></image>
 				<image class="my-ri" src="../../../static/images/home_ri.png" mode=""></image>
 				<view class="content">
@@ -37,7 +37,11 @@
 		},
 		
 		methods: {
-			
+			handelRecDetail(id){
+				uni.navigateTo({
+					url:"/pages/recruit/rec_detail?id="+id
+				})
+			}
 			
 
 		}
