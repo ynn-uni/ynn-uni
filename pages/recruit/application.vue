@@ -55,7 +55,7 @@
 			<view class="btn">
 				<button > 报名</button>
 			</view>
-			<view class="cancel text-center" @tab="cancal">
+			<view class="cancel text-center" @click="cancal">
 				取消
 			</view>
 		</form>
@@ -85,7 +85,10 @@
 				})
 			},
 			cancal(){
-				// uni.navigateBack()
+				console.log("11")
+				uni.navigateBack({
+					delta:1
+				})
 			}
 		}
 	}

@@ -6,6 +6,7 @@
 		// 		"navigationBarTitleText": "当前开发页"
 		// 	}
 		// },
+		
 		 {
 		 	"path": "pages/login/login",
 		 	"style": {
@@ -15,6 +16,18 @@
 		 	"path": "pages/home/home",
 		 	"style": {
 		 		"navigationBarTitleText": "药牛牛"
+		 	}
+		 }, 
+		 {
+		 	"path": "pages/news/newsdetail",
+		 	"style": {
+		 		"navigationBarTitleText": "新闻详情"
+		 	}
+		 }, 
+		 {
+		 	"path": "pages/news/news",
+		 	"style": {
+		 		"navigationBarTitleText": "新闻资讯"
 		 	}
 		 }, 
 		{
@@ -30,6 +43,12 @@
 			}
 		},
 		{
+			"path": "pages/recruit/rec_status",
+			"style": {
+				"navigationBarTitleText": "招募报名"
+			}
+		},
+		{
 			"path": "pages/recruit/rec_detail",
 			"style": {
 				"navigationBarTitleText": "招募详情"
@@ -41,12 +60,7 @@
 			}
 		},
 		
-		{
-			"path": "pages/news/news",
-			"style": {
-				"navigationBarTitleText": "新闻资讯"
-			}
-		}, 
+		
 		
 		{
 			"path": "pages/my/my",

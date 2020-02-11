@@ -5,13 +5,13 @@
 				<view class="line"></view>
 				<view class="text">新闻资讯</view>
 			</view>
-			<view class="more">
+			<view class="more" @click="handelNewsList">
 				查看更多<text class="cuIcon-right"></text>
 			</view>
 			
 		</view>
 		<view class="list">
-			<view class="item" v-for="(item,index) in newsList" :key="index">
+			<view class="item" v-for="(item,index) in newsList" :key="index" @click="handelNewsDetail(index)">
 				<image src="../../../static/images/home_new.png" mode=""></image>
 				<view class="text">
 					<view class="title">
@@ -69,7 +69,16 @@
 		
 		methods: {
 			
-			
+			handelNewsList(){
+				uni.switchTab({
+					url:'/pages/news/news'
+				})
+			},
+			handelNewsDetail(){
+				uni.navigateTo({
+					url:'/pages/news/newsdetail'
+				})
+			},
 	
 		}
 	}

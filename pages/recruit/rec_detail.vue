@@ -77,6 +77,7 @@
 	export default {
 		data() {
 			return {
+				status:0,//0未提交  1已提交未审核 2已提交审核通过 3已提交审核未通过
 				isend:false,
 				modalName:null,
 					data:{
@@ -109,9 +110,16 @@
 				})
 			},
 			handelApplication(){
-				uni.navigateTo({
-					url:"/pages/recruit/application"
-				})
+				if(this.status==0){
+					uni.navigateTo({
+						url:"/pages/recruit/application"
+					})
+				}else{
+					uni.navigateTo({
+						url:"/pages/recruit/rec_status?status="+this.status
+					})
+				}
+				
 			}
 		}
 	}

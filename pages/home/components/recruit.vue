@@ -5,16 +5,34 @@
 				<view class="line"></view>
 				<view class="text">征募报名</view>
 			</view>
-			<view class="more">
+			<view class="more" @click="handelRecList">
 				查看更多<text class="cuIcon-right"></text>
 			</view>
 			
 		</view>
-		<image class="rec_img" src="../../../static/images/home_rec.png" mode=""></image>
+		<view class="rec_go">
+			<image class="rec_img" src="../../../static/images/home_recgo.jpg" mode=""></image>
+			<view class="box">
+				琥珀酸曲格勒汀片志愿者
+			</view>
+		</view>
+		
 		<view class="list">
-			<view class="item" v-for="(item,index) in list" :key="index" @click="handelRecDetail(index)">
-				<image class="my-bg" src="../../../static/images/home_li.png" mode=""></image>
-				<image class="my-ri" src="../../../static/images/home_ri.png" mode=""></image>
+			<view class="item" @click="handelRecDetail('1')">
+				<!-- <image class="my-bg" src="../../../static/images/home1.png" mode=""></image> -->
+				<image class="my-ri" src="../../../static/images/home_re1.png" mode=""></image>
+				<view class="content">
+					<view class="text">
+						琥珀酸曲格叻玎片叻玎片琥珀酸曲格叻玎片叻玎片琥珀酸曲格叻玎片叻玎片
+					</view>
+					<view class="re">
+						临床招募
+					</view>
+				</view>
+			</view>
+			<view class="item" @click="handelRecDetail('2')">
+				<!-- <image class="my-bg" src="../../../static/images/home1.png" mode=""></image> -->
+				<image class="my-ri1" src="../../../static/images/home_re2.png" mode=""></image>
 				<view class="content">
 					<view class="text">
 						琥珀酸曲格叻玎片叻玎片琥珀酸曲格叻玎片叻玎片琥珀酸曲格叻玎片叻玎片
@@ -41,8 +59,12 @@
 				uni.navigateTo({
 					url:"/pages/recruit/rec_detail?id="+id
 				})
+			},
+			handelRecList(){
+				uni.switchTab({
+					url:"/pages/recruit/recruit"
+				})
 			}
-			
 
 		}
 	}
@@ -51,7 +73,7 @@
 <style lang="scss" scoped>
 	.recruit{
 		padding: 0rpx 30rpx;
-		padding-top: 110rpx;
+		padding-top: 90rpx;
 		.title{
 			width: 100%;
 			display: flex;
@@ -79,27 +101,53 @@
 				height:40rpx;
 			}
 		}
-		.rec_img{
-			width: 710rpx;
-			height: 190rpx;
-			margin-top: 10rpx;
+		.rec_go{
+			position: relative;
+			.rec_img{
+				width: 710rpx;
+				height: 190rpx;
+				margin-top: 10rpx;
+			}
+			.box{
+				width: 390rpx;
+				position: absolute;
+				top: 46rpx;
+				left: 180rpx;
+				color: #fff;
+				font-size: 44rpx;
+				font-style: italic;
+				overflow : hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+			}
 		}
+		
 		.list{
 			display: flex;
 			margin-top: 6rpx;
 			justify-content: space-between;
 			.item{
+				width: 332rpx;
+				height: 164rpx;
 				position: relative;
-				.my-bg{
-					width: 332rpx;
-					height: 164rpx;
-				}
+				background:linear-gradient(134deg,rgba(80,227,194,1) 0%,rgba(66,234,157,1) 100%);
+				border-radius: 18rpx;
+				
 				.my-ri{
 					width: 124rpx;
-					height: 74rpx;
+					height: 114rpx;
 					position: absolute;
-					right: 4rpx;
-					bottom: 10rpx;
+					right: -14rpx;
+					bottom: -20rpx;
+				}
+				.my-ri1{
+					width: 140rpx;
+					height: 122rpx;
+					position: absolute;
+					right: -14rpx;
+					bottom: -20rpx;
 				}
 				.content{
 					position: absolute;

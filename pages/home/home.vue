@@ -1,15 +1,21 @@
 <template>
 	<view class="home">
+		<!-- <Meaasge></Meaasge> -->
 		<Swiper></Swiper>
+		
 		<Recruit></Recruit>
+		
 		<News></News>
+		
 	</view>
 </template>
 
 <script>
+	import Meaasge from "./components/message"
 	import Swiper from "./components/swiper"
 	import Recruit from "./components/recruit"
 	import News from "./components/news"
+	
 	export default {
 		data() {
 			return {
@@ -19,7 +25,8 @@
 		components:{
 			Swiper,
 			Recruit,
-			News
+			News,
+			Meaasge
 		},
 		onLoad() {
 

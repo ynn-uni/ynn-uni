@@ -1,22 +1,150 @@
 <template>
-	<view>
-		news
+	<view class="news">
+		<view class="hot">
+			<view class="title">
+				<view class="left">
+					<view class="line"></view>
+					<view class="text">热门资讯</view>
+				</view>
+				<view class="more" >
+					
+				</view>
+			</view>	
+			
+			 <view class="vi">
+				 <scroll-view class="scroll-view" scroll-x="true" scroll-left="0">
+					 <view  class="scroll-view-item">
+						 <image src="../../static/images/home_new.png" mode=""></image>
+						 <view class="box">
+							 <view class="text">
+							 	重庆市肿瘤医院1期临床重庆市肿瘤医院1期临床试…
+							 </view>
+						 </view>
+					 </view>
+					<view  class="scroll-view-item">
+						 <image src="../../static/images/home_new.png" mode=""></image>
+						 <view class="box">
+							 <view class="text">
+								重庆市肿瘤医院1期临床重庆市肿瘤医院1期临床试…
+							 </view>
+						 </view>
+					</view>
+					<view  class="scroll-view-item">
+						 <image src="../../static/images/home_new.png" mode=""></image>
+						 <view class="box">
+							 <view class="text">
+								重庆市肿瘤医院1期临床重庆市肿瘤医院1期临床试…
+							 </view>
+						 </view>
+					</view>
+				 </scroll-view>
+			 </view>
+			
+		</view>
+		<view class="newslist">
+			<NewItem v-for="(item,index) in 10" :key="index"></NewItem>
+		</view>
+		
 	</view>
 </template>
 
 <script>
+	import NewItem from './components/newItem.vue'
 	export default {
 		data() {
 			return {
-				
+				 scrollTop: 0,
+				old: {
+					scrollTop: 0
+				}
 			}
 		},
+		components:{
+			NewItem
+		},
 		methods: {
-			
+			scroll: function(e) {
+			            console.log(e)
+			            this.old.scrollTop = e.detail.scrollTop
+			        },
 		}
 	}
 </script>
 
-<style>
-
+<style scoped lang="scss">
+.news{
+	
+	.hot{
+		padding: 0 30rpx;
+		background-color: #fff;
+		.title{
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.left{
+				display: flex;
+				align-items: center;
+				height: 50rpx;
+				.line{
+					width:12rpx;
+					height:30rpx;
+					background:rgba(54,174,173,1);
+					margin-right: 10rpx;
+				}
+				.text{
+					font-size:36rpx;
+					color:rgba(74,74,74,1);
+					
+				}
+			}
+			
+		}
+		.vi{
+			overflow: hidden;
+			// width: 690rpx;
+			padding: 20rpx 0;
+			.scroll-view{
+				width:100%;
+				white-space: nowrap;
+				// margin-left: -30rpx;
+				.scroll-view-item{
+					display: inline-block;
+					position: relative;
+					margin-right: 30rpx;
+					image{
+						width: 440rpx;
+						height: 246rpx;
+					}
+					
+					.box{
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						background-color: rgba(0,0,0,0.3);
+						border-radius: 10rpx;
+						.text{
+							width: 440rpx;
+							padding: 20rpx;
+							margin-top: 180rpx;
+							overflow : hidden;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+							font-size: 32rpx;
+							color: #fff;
+						}
+					}
+					
+				}
+				
+			}
+		}
+		
+	}
+	.newslist{
+		margin-top: 20rpx;
+	}
+}
 </style>
