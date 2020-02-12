@@ -4,10 +4,10 @@
 			
 			
 						<!-- <image src="../../../static/icons/meassage.png" mode=""></image> -->
-						<!-- <screenTextScroll :list="list"></screenTextScroll> -->
+						<screenTextScroll :list="list"></screenTextScroll>
 						<!-- 您已通过了xxxxx项目的审批，请在健康记录里面进行每日健康管理上传 -->
 					
-			<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
+			<!-- <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
 				<swiper-item>
 					<view class="swiper-item uni-bg-red">A</view>
 				</swiper-item>
@@ -17,7 +17,7 @@
 				<swiper-item>
 					<view class="swiper-item uni-bg-blue">C</view>
 				</swiper-item>
-			</swiper>
+			</swiper> -->
 		<!-- </view> -->
 		
 	</view>

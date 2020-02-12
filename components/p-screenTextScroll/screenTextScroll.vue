@@ -17,16 +17,28 @@ usage:
 <template>
 	<view class="_notice">
 		<swiper class="_swiper tc" @change="slideChange" indicator-dots="false" autoplay="true" :interval="interval" circular="true"
-		 display-multiple-items="2" :duration="duration">
-			<swiper-item>
-				<view class="swiper-item uni-bg-red"></view>
-			</swiper-item>
+		 display-multiple-items="1" :duration="duration" disable-touch="true">
+			
+			
+			<!-- <swiper-item>
+				<view class="swiper-item uni-bg-red">2</view>
+			</swiper-item> -->
+			
+			
 			<swiper-item>
 				<view class="swiper-item uni-bg-red"></view>
 			</swiper-item>
 			<swiper-item v-for="(item,index) in list" :key="index">
-				<view class="swiper-item uni-bg-red">{{item}}</view>
+				<view class="swiper-item uni-bg-red">
+					<!-- <image src="../../static/icons/meassage.png" mode=""></image> -->
+					{{item}}
+				</view>
 			</swiper-item>
+			
+			<swiper-item>
+				<view class="swiper-item uni-bg-red"></view>
+			</swiper-item>
+			
 		</swiper>
 	</view>
 </template>
@@ -60,24 +72,35 @@ usage:
 
 <style lang="scss">
 	._notice {
-		position: fixed;
-		left: 0;
-		top: 0;
-		/* #ifdef H5 */
-		top: 88upx;
+		// position: fixed;
+		// left: 0;
+		// top: 0;
+		// /* #ifdef H5 */
+		// top: 88upx;
 		/* #endif */
 		z-index: 9;
 		width: 100%;
-		background: rgba(72, 1, 1, 0.3);
-		font-size: 20upx;
+		background: rgba(255, 255, 255, 1);
+		font-size: 28upx;
 		height: 44upx;
-		color: #ffffff;
+		// color: #ffffff;
 		border-radius: 6upx;
 		overflow: hidden;
 		box-sizing: border-box;
-
+		color:rgba(74,74,74,1);
+		image{
+			width: 30rpx;
+			height: 28rpx;
+			margin-top: 10rpx;
+			margin-right: 4rpx;
+			vertical-align: center;
+		}
+		swiper-item{
+			overflow: visible;
+			white-space: nowrap;
+		}
 	}
-
+	
 	._swiper {
 		line-height: 44upx;
 	}

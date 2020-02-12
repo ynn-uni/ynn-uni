@@ -73,7 +73,7 @@
 <style lang="scss" scoped>
 	.recruit{
 		padding: 0rpx 30rpx;
-		padding-top: 90rpx;
+		padding-top: 70rpx;
 		.title{
 			width: 100%;
 			display: flex;

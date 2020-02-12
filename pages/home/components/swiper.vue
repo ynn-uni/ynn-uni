@@ -52,7 +52,7 @@
 		z-index: var(--index);
 	}
 	.my-swiper{
-		
+		margin-top: -40rpx;
 		/deep/.card-swiper{
 			.swiper-item{
 				border: 1px solid #fff;

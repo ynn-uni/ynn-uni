@@ -10,6 +10,12 @@
 						<view class="date">
 							<image src="../../static/icons/recruit_time.png" mode=""></image>
 							{{item.startdate}}～{{item.enddate}}
+							<view class="status0" v-if="item.status==0">
+								报名中
+							</view>
+							<view class="status0 status1" v-if="item.status==1">
+								报名结束
+							</view>
 						</view>
 					</view>
 					<view class="info">
@@ -64,6 +70,7 @@
 					age:'18-40',
 					gender:'男性',
 					other:'无',
+					status:0
 				})
 			}
 			console.log(this.list)
@@ -129,6 +136,20 @@
 							margin-left: 16rpx;
 							margin-right: 10rpx;
 						}
+					}
+					.status0{
+						font-size: 24rpx;
+						line-height: 46rpx;
+						text-align: center;
+						padding: 0 10rpx;
+						background-color: #2bceeb;
+						color: #fff;
+						border-radius: 6rpx;
+						margin-left: 8rpx;
+					}
+					.status1{
+						background-color: #fe8b67;
+						
 					}
 				}
 				.info{

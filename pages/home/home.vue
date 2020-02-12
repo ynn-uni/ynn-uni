@@ -1,6 +1,6 @@
 <template>
 	<view class="home">
-		<!-- <Meaasge></Meaasge> -->
+		<Meaasge></Meaasge>
 		<Swiper></Swiper>
 		
 		<Recruit></Recruit>

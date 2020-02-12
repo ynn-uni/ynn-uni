@@ -26,6 +26,7 @@
 				
 			</button>
 			
+			
 		</view>
 		
 		
@@ -126,6 +127,8 @@
 				
 		}
 		.btn_grou{
+			position: fixed;
+			bottom: 4rpx;
 			button{
 				width:690rpx;
 				height:80rpx;

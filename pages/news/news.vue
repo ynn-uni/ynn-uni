@@ -6,14 +6,12 @@
 					<view class="line"></view>
 					<view class="text">热门资讯</view>
 				</view>
-				<view class="more" >
-					
-				</view>
+				<view class="more" ></view>
 			</view>	
 			
 			 <view class="vi">
 				 <scroll-view class="scroll-view" scroll-x="true" scroll-left="0">
-					 <view  class="scroll-view-item">
+					 <view  class="scroll-view-item" v-for="(item,index) in 3" :key="index">
 						 <image src="../../static/images/home_new.png" mode=""></image>
 						 <view class="box">
 							 <view class="text">
@@ -21,22 +19,7 @@
 							 </view>
 						 </view>
 					 </view>
-					<view  class="scroll-view-item">
-						 <image src="../../static/images/home_new.png" mode=""></image>
-						 <view class="box">
-							 <view class="text">
-								重庆市肿瘤医院1期临床重庆市肿瘤医院1期临床试…
-							 </view>
-						 </view>
-					</view>
-					<view  class="scroll-view-item">
-						 <image src="../../static/images/home_new.png" mode=""></image>
-						 <view class="box">
-							 <view class="text">
-								重庆市肿瘤医院1期临床重庆市肿瘤医院1期临床试…
-							 </view>
-						 </view>
-					</view>
+					
 				 </scroll-view>
 			 </view>
 			
