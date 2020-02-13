@@ -5,7 +5,7 @@
 		<swiper class="card-swiper"  :circular="true"
 		 :autoplay="true" interval="5000" duration="500" @change="cardSwiper" indicator-color="#8799a3"
 		 indicator-active-color="#0081ff">
-			<swiper-item v-for="(item,index) in 5" :key="index" :class="cardCur==index?'cur':''">
+			<swiper-item v-for="(item,index) in 5" :key="index" :class="cardCur==index?'cur':''" @click="handelRecDetail('1')">
 				<view class="swiper-item">
 					<image src="../../../static/images/home_swiper.png" mode="aspectFill"></image>
 					<!-- <video :src="item.url" autoplay loop muted :show-play-btn="false" :controls="false" objectFit="cover" v-if="item.type=='video'"></video> -->
@@ -29,7 +29,11 @@
 		},
 		
 		methods: {
-			
+			handelRecDetail(id){
+				uni.navigateTo({
+					url:"/pages/recruit/rec_detail?id="+id
+				})
+			},
 			cardSwiper(e) {
 				this.cardCur = e.detail.current
 			},

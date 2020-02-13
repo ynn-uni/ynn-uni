@@ -25,7 +25,7 @@
 			
 		</view>
 		<view class="newslist">
-			<NewItem v-for="(item,index) in 10" :key="index"></NewItem>
+			<NewItem v-for="(item,index) in size" :key="index"></NewItem>
 		</view>
 		
 	</view>
@@ -39,11 +39,23 @@
 				 scrollTop: 0,
 				old: {
 					scrollTop: 0
-				}
+				},
+				size:10
 			}
 		},
 		components:{
 			NewItem
+		},
+		onReachBottom(){
+			var that=this
+			console.log("ppp")
+			uni.showLoading({
+				icon:'none'
+			})
+			setTimeout(function(){
+				that.size+=10
+				uni.hideLoading()
+			},1000)
 		},
 		methods: {
 			scroll: function(e) {

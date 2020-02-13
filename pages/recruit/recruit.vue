@@ -58,6 +58,29 @@
 				
 			}
 		},
+		onReachBottom(){
+			var that=this
+			console.log("ppp")
+			uni.showLoading({
+				icon:'none'
+			})
+			setTimeout(function(){
+				for(var i=0;i<10;i++){
+					that.list.push(
+					{
+						id:i,
+						title:'「临床招募」琥珀酸曲格叻玎片（空腹）志愿者',
+						startdate:'2019.9.11',
+						enddate:'2019.9.22',
+						age:'18-40',
+						gender:'男性',
+						other:'无',
+						status:0
+					})
+				}
+				uni.hideLoading()
+			},1000)
+		},
 		onLoad() {
 			
 			for(var i=0;i<10;i++){
