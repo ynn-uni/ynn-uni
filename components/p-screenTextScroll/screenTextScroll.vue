@@ -17,29 +17,36 @@ usage:
 <template>
 	<view class="_notice">
 		<swiper class="_swiper tc" @change="slideChange" indicator-dots="false" autoplay="true" :interval="interval" circular="true"
-		 display-multiple-items="1" :duration="duration" disable-touch="true">
-			
-			
-			<!-- <swiper-item>
-				<view class="swiper-item uni-bg-red">2</view>
-			</swiper-item> -->
+		 display-multiple-items="2" :duration="duration" disable-touch="true">
 			
 			
 			<swiper-item>
 				<view class="swiper-item uni-bg-red"></view>
 			</swiper-item>
+			<swiper-item>
+				<view class="swiper-item uni-bg-red"></view>
+			</swiper-item>
+			<swiper-item>
+				<view class="swiper-item uni-bg-red"></view>
+			</swiper-item>
+			
 			<swiper-item v-for="(item,index) in list" :key="index">
 				<view class="swiper-item uni-bg-red">
 					<!-- <image src="../../static/icons/meassage.png" mode=""></image> -->
 					{{item}}
 				</view>
 			</swiper-item>
-			
+			<swiper-item>
+				<view class="swiper-item uni-bg-red"></view>
+			</swiper-item>
 			<swiper-item>
 				<view class="swiper-item uni-bg-red"></view>
 			</swiper-item>
 			
+			
+			
 		</swiper>
+		
 	</view>
 </template>
 
