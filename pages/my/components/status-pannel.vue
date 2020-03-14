@@ -1,11 +1,12 @@
 <template>
 	<view class="status-pannel flex justify-between">
 		<view
-			v-for="(item, index) in statusMap" :key="index"
+			v-for="(item, index) in statusMap"
+			:key="index"
 			class="status-pannel-item flex flex-direction text-center"
 			@click="handleClick(item.status)"
 		>
-			<image :src="`../../../static/icons/${ item.icon }.png`"></image>
+			<image :src="`../../../static/icons/${ item.icon }.png`" />
 			<text class="text-white">{{ item.label }}</text>
 		</view>
 	</view>

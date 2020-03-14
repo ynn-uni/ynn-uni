@@ -1,7 +1,7 @@
 <template>
 	<view class="link bg-white">
 		<view class="text-center">
-			<image class="link-bg" src="../../static/images/link_bg.png"></image>
+			<image class="link-bg" src="../../static/images/link_bg.png" />
 		</view>
 		<view class="link-action">
 			<text>与患者关系：</text>
@@ -30,13 +30,16 @@
 					{
 						value: 1,
 						label: '父母'
-					}, {
+					},
+					{
 						value: 2,
 						label: '配偶'
-					}, {
+					},
+					{
 						value: 3,
 						label: '子女'
-					}, {
+					},
+					{
 						value: 4,
 						label: '其他'
 					}
@@ -44,9 +47,7 @@
 			}
 		},
 		methods: {
-			radioChange() {
-				
-			}
+			radioChange() {}
 		}
 	}
 </script>

@@ -11,19 +11,19 @@
 		<view class="person-action flex justify-around margin-top-lg">
 			<view class="action-button text-center">
 				<button class="cu-btn cuIcon lg">
-					<image src="../../../static/icons/my-info.png"></image>
+					<image src="../../../static/icons/my-info.png" />
 				</button>
 				<view class="action-label text-sm">健康档案</view>
 			</view>
 			<navigator class="action-button text-center" url="/pages/message/list">
 				<button class="cu-btn cuIcon lg">
-					<image src="../../../static/icons/my-message.png"></image>
+					<image src="../../../static/icons/my-message.png" />
 				</button>
 				<view class="action-label text-sm">我的消息</view>
 			</navigator>
 			<view class="action-button text-center">
 				<button class="cu-btn cuIcon lg">
-					<image src="../../../static/icons/my-todo.png"></image>
+					<image src="../../../static/icons/my-todo.png" />
 				</button>
 				<view class="action-label text-sm">日程管理</view>
 			</view>
@@ -38,7 +38,7 @@
 			return {
 				personRole: 'visitor'
 			}
-		},
+		}
 	}
 </script>
 
@@ -51,15 +51,15 @@
 			left: 50%;
 			width: 150rpx;
 			height: 150rpx;
-			transform: translateX(-50%) translateY(-50%);;
-			border: 15rpx solid rgba(2,143,103,.21);
+			transform: translateX(-50%) translateY(-50%);
+			border: 15rpx solid rgba(2, 143, 103, 0.21);
 			overflow: hidden;
 		}
 		.person-name {
 			padding-top: 100rpx;
 			font-weight: 500;
 		}
-		.project-title  {
+		.project-title {
 			line-height: 80rpx;
 		}
 		.project-role {
@@ -72,7 +72,7 @@
 			margin-left: 40rpx;
 			margin-right: 40rpx;
 			border-radius: 40rpx;
-			border: 1px solid rgba(151,151,151,1);
+			border: 1px solid rgba(151, 151, 151, 1);
 			.person-notice-time {
 				display: inline-block;
 				width: 82rpx;

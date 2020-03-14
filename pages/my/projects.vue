@@ -12,8 +12,8 @@
 					</view>
 				</view>
 				<view class="action">
-					<status-tag v-if="item.status === 0" type="warning" label="进行"/>
-					<status-tag v-if="item.status === 1" type="success" label="完成"/>
+					<status-tag v-if="item.status === 0" type="warning" label="进行" />
+					<status-tag v-if="item.status === 1" type="success" label="完成" />
 				</view>
 			</view>
 		</view>
@@ -34,11 +34,13 @@
 						icon: 'project-all',
 						label: '全部项目',
 						status: null
-					}, {
+					},
+					{
 						icon: 'project-processing',
 						label: '进行项目',
 						status: 0
-					}, {
+					},
+					{
 						icon: 'project-finish',
 						label: '已完成',
 						status: 1
@@ -66,27 +68,33 @@
 						title: '琥珀酸曲格叻玎片（空腹）志愿者',
 						type: '「临床试验」',
 						status: 1
-					}, {
+					},
+					{
 						title: '琥珀酸曲格叻玎片（空腹）志愿者',
 						type: '「临床试验」',
 						status: 0
-					}, {
+					},
+					{
 						title: '琥珀酸曲格叻玎片（空腹）志愿者',
 						type: '「临床试验」',
 						status: 0
-					}, {
+					},
+					{
 						title: '琥珀酸曲格叻玎片（空腹）志愿者',
 						type: '「临床试验」',
 						status: 1
-					}, {
+					},
+					{
 						title: '琥珀酸曲格叻玎片（空腹）志愿者',
 						type: '「临床试验」',
 						status: 1
-					}, {
+					},
+					{
 						title: '琥珀酸曲格叻玎片（空腹）志愿者',
 						type: '「临床试验」',
 						status: 1
-					}, {
+					},
+					{
 						title: '琥珀酸曲格叻玎片（空腹）志愿者',
 						type: '「临床试验」',
 						status: 1
