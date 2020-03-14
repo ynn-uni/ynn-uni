@@ -1,11 +1,12 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		// {
-		// 	"path": "pages",
+		// 	"path": "pages/schedule/calendar",
 		// 	"style": {
 		// 		"navigationBarTitleText": "当前开发页"
 		// 	}
 		// },
+<<<<<<< HEAD
 		
 		 {
 		 	"path": "pages/login/login",
@@ -30,17 +31,29 @@
 		 		"navigationBarTitleText": "新闻资讯"
 		 	}
 		 }, 
+=======
+>>>>>>> update; 格式化
 		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "药牛牛"
+			}
+		}, {
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "药牛牛"
+			}
+		}, {
 			"path": "pages/recruit/application",
 			"style": {
 				"navigationBarTitleText": "申请免费用药"
 			}
-		},
-		{
+		}, {
 			"path": "pages/recruit/treaty",
 			"style": {
 				"navigationBarTitleText": "药牛牛"
 			}
+<<<<<<< HEAD
 		},
 		{
 			"path": "pages/recruit/rec_status",
@@ -49,20 +62,24 @@
 			}
 		},
 		{
+=======
+		}, {
+>>>>>>> update; 格式化
 			"path": "pages/recruit/rec_detail",
 			"style": {
 				"navigationBarTitleText": "招募详情"
 			}
-		},{
+		}, {
 			"path": "pages/recruit/recruit",
 			"style": {
 				"navigationBarTitleText": "征募报名"
 			}
-		},
-		
-		
-		
-		{
+		}, {
+			"path": "pages/news/news",
+			"style": {
+				"navigationBarTitleText": "新闻资讯"
+			}
+		}, {
 			"path": "pages/my/my",
 			"style": {
 				"navigationBarTitleText": "我的"
@@ -93,17 +110,22 @@
 				"navigationBarTitleText": "身份认定"
 			}
 		}, {
-            "path": "pages/message/list",
+			"path": "pages/message/list",
 			"style": {
 				"navigationBarTitleText": "我的消息"
 			}
-        }, {
-            "path" : "pages/message/detail",
-            "style": {
-            	"navigationBarTitleText": "消息通知"
-            }
-        }
-    ],
+		}, {
+			"path": "pages/message/detail",
+			"style": {
+				"navigationBarTitleText": "消息通知"
+			}
+		}, {
+		  "path" : "pages/schedule/calendar",
+		  "style" : {
+				"navigationBarTitleText": "日程管理"
+			}
+		}
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "肿瘤医院",
