@@ -9,24 +9,28 @@
 			</view>
 		</view>
 		<view class="person-action flex justify-around margin-top-lg">
-			<view class="action-button text-center">
-				<button class="cu-btn cuIcon lg">
-					<image src="../../../static/icons/my-info.png" />
-				</button>
-				<view class="action-label text-sm">健康档案</view>
-			</view>
-			<navigator class="action-button text-center" url="/pages/message/list">
+			<navigator class="action-button text-center" url="/pages/archives/archives" hover-class="none">
+				<view class="action-button text-center">
+					<button class="cu-btn cuIcon lg">
+						<image src="../../../static/icons/my-info.png" />
+					</button>
+					<view class="action-label text-sm">健康档案</view>
+				</view>
+			</navigator>
+			<navigator class="action-button text-center" url="/pages/message/list" hover-class="none">
 				<button class="cu-btn cuIcon lg">
 					<image src="../../../static/icons/my-message.png" />
 				</button>
 				<view class="action-label text-sm">我的消息</view>
 			</navigator>
-			<view class="action-button text-center">
-				<button class="cu-btn cuIcon lg">
-					<image src="../../../static/icons/my-todo.png" />
-				</button>
-				<view class="action-label text-sm">日程管理</view>
-			</view>
+			<navigator class="action-button text-center" url="/pages/schedule/calendar" hover-class="none">
+				<view class="action-button text-center">
+					<button class="cu-btn cuIcon lg">
+						<image src="../../../static/icons/my-todo.png" />
+					</button>
+					<view class="action-label text-sm">日程管理</view>
+				</view>
+			</navigator>
 		</view>
 	</view>
 </template>
