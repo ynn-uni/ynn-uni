@@ -1,171 +1,157 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		// {
-		// 	"path": "pages/schedule/calendar",
-		// 	"style": {
-		// 		"navigationBarTitleText": "当前开发页"
-		// 	}
-		// },
-<<<<<<< HEAD
-		
-		 {
-		 	"path": "pages/login/login",
-		 	"style": {
-		 		"navigationBarTitleText": "药牛牛"
-		 	}
-		 }, {
-		 	"path": "pages/home/home",
-		 	"style": {
-		 		"navigationBarTitleText": "药牛牛"
-		 	}
-		 }, 
-		 {
-		 	"path": "pages/news/newsdetail",
-		 	"style": {
-		 		"navigationBarTitleText": "新闻详情"
-		 	}
-		 }, 
-		 {
-		 	"path": "pages/news/news",
-		 	"style": {
-		 		"navigationBarTitleText": "新闻资讯"
-		 	}
-		 }, 
-=======
->>>>>>> update; 格式化
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    // {
+    // 	"path": "pages/schedule/calendar",
+    // 	"style": {
+    // 		"navigationBarTitleText": "当前开发页"
+    // 	}
+    // },
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "药牛牛"
+      }
+    },
+    {
+      "path": "pages/home/home",
+      "style": {
+        "navigationBarTitleText": "药牛牛"
+      }
+    },
+    {
+      "path": "pages/recruit/application",
+      "style": {
+        "navigationBarTitleText": "申请免费用药"
+      }
+    },
+    {
+      "path": "pages/recruit/treaty",
+      "style": {
+        "navigationBarTitleText": "药牛牛"
+      }
+    },
 		{
-			"path": "pages/login/login",
-			"style": {
-				"navigationBarTitleText": "药牛牛"
-			}
-		}, {
-			"path": "pages/home/home",
-			"style": {
-				"navigationBarTitleText": "药牛牛"
-			}
-		}, {
-			"path": "pages/recruit/application",
-			"style": {
-				"navigationBarTitleText": "申请免费用药"
-			}
-		}, {
-			"path": "pages/recruit/treaty",
-			"style": {
-				"navigationBarTitleText": "药牛牛"
-			}
-<<<<<<< HEAD
-		},
-		{
-			"path": "pages/recruit/rec_status",
-			"style": {
-				"navigationBarTitleText": "招募报名"
-			}
-		},
-		{
-=======
-		}, {
->>>>>>> update; 格式化
-			"path": "pages/recruit/rec_detail",
-			"style": {
-				"navigationBarTitleText": "招募详情"
-			}
-		}, {
 			"path": "pages/recruit/recruit",
 			"style": {
 				"navigationBarTitleText": "征募报名"
 			}
-		}, {
-			"path": "pages/news/news",
-			"style": {
-				"navigationBarTitleText": "新闻资讯"
-			}
-		}, {
-			"path": "pages/my/my",
-			"style": {
-				"navigationBarTitleText": "我的"
-			}
-		}, {
-			"path": "pages/my/about",
-			"style": {
-				"navigationBarTitleText": "关于我们"
-			}
-		}, {
-			"path": "pages/my/contact",
-			"style": {
-				"navigationBarTitleText": "联系我们"
-			}
-		}, {
-			"path": "pages/my/apply",
-			"style": {
-				"navigationBarTitleText": "试验申请"
-			}
-		}, {
-			"path": "pages/my/projects",
-			"style": {
-				"navigationBarTitleText": "项目管理"
-			}
-		}, {
-			"path": "pages/my/link",
-			"style": {
-				"navigationBarTitleText": "身份认定"
-			}
-		}, {
-			"path": "pages/message/list",
-			"style": {
-				"navigationBarTitleText": "我的消息"
-			}
-		}, {
-			"path": "pages/message/detail",
-			"style": {
-				"navigationBarTitleText": "消息通知"
-			}
-		}, {
-		  "path" : "pages/schedule/calendar",
-		  "style" : {
-				"navigationBarTitleText": "日程管理"
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "肿瘤医院",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	},
-	"tabBar": {
-		"color": "#4A4A4A",
-		"selectedColor": "#4A4A4A",
-		"borderStyle": "black",
-		"backgroundColor": "#F8F8F8",
-		"fontSize": "12upx",
-		"list": [{
-			"pagePath": "pages/home/home",
-			"iconPath": "static/images/home.jpg",
-			"selectedIconPath": "static/images/home_active.jpg",
-			"text": "首页"
-		}, {
-			"pagePath": "pages/recruit/recruit",
-			"iconPath": "static/images/recruit.jpg",
-			"selectedIconPath": "static/images/recruit_active.jpg",
-			"text": "征募报名"
-		}, {
-			"pagePath": "pages/news/news",
-			"iconPath": "static/images/news.jpg",
-			"selectedIconPath": "static/images/news_active.jpg",
-			"text": "新闻资讯"
-		}, {
-			"pagePath": "pages/my/my",
-			"iconPath": "static/images/my.jpg",
-			"selectedIconPath": "static/images/my_active.jpg",
-			"text": "我的"
-		}]
-	},
-	"condition": { //模式配置，仅开发期间生效
-		"current": 0, //当前激活的模式(list 的索引项)
-		"list": [{
-			"name": "", //模式名称
-			"path": "", //启动页面，必选
-			"query": "" //启动参数，在页面的onLoad函数里面得到
-		}]
-	}
+		},
+    {
+      "path": "pages/recruit/rec_detail",
+      "style": {
+        "navigationBarTitleText": "招募详情"
+      }
+    },
+    {
+      "path": "pages/news/news",
+      "style": {
+        "navigationBarTitleText": "新闻资讯"
+      }
+    },
+    {
+      "path": "pages/my/my",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/my/about",
+      "style": {
+        "navigationBarTitleText": "关于我们"
+      }
+    },
+    {
+      "path": "pages/my/contact",
+      "style": {
+        "navigationBarTitleText": "联系我们"
+      }
+    },
+    {
+      "path": "pages/my/apply",
+      "style": {
+        "navigationBarTitleText": "试验申请"
+      }
+    },
+    {
+      "path": "pages/my/projects",
+      "style": {
+        "navigationBarTitleText": "项目管理"
+      }
+    },
+    {
+      "path": "pages/my/link",
+      "style": {
+        "navigationBarTitleText": "身份认定"
+      }
+    },
+    {
+      "path": "pages/message/list",
+      "style": {
+        "navigationBarTitleText": "我的消息"
+      }
+    },
+    {
+      "path": "pages/message/detail",
+      "style": {
+        "navigationBarTitleText": "消息通知"
+      }
+    },
+    {
+      "path": "pages/schedule/calendar",
+      "style": {
+        "navigationBarTitleText": "日程管理"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "肿瘤医院",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#4A4A4A",
+    "selectedColor": "#4A4A4A",
+    "borderStyle": "black",
+    "backgroundColor": "#F8F8F8",
+    "fontSize": "12upx",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "static/images/home.jpg",
+        "selectedIconPath": "static/images/home_active.jpg",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/recruit/recruit",
+        "iconPath": "static/images/recruit.jpg",
+        "selectedIconPath": "static/images/recruit_active.jpg",
+        "text": "征募报名"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "iconPath": "static/images/news.jpg",
+        "selectedIconPath": "static/images/news_active.jpg",
+        "text": "新闻资讯"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "static/images/my.jpg",
+        "selectedIconPath": "static/images/my_active.jpg",
+        "text": "我的"
+      }
+    ]
+  },
+  "condition": {
+    //模式配置，仅开发期间生效
+    "current": 0, //当前激活的模式(list 的索引项)
+    "list": [
+      {
+        "name": "", //模式名称
+        "path": "", //启动页面，必选
+        "query": "" //启动参数，在页面的onLoad函数里面得到
+      }
+    ]
+  }
 }
