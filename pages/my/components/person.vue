@@ -8,13 +8,6 @@
 				<open-data type="userNickName" />
 			</view>
 		</view>
-		<view class="project-title text-bold text-center">琥珀酸曲格叻玎片（空腹）志愿者</view>
-		<view class="project-role  text-center">
-			{{ personRole === 'visitor' ? '游客' : '试药员' }}</view>
-		<view class="person-notice text-sm">
-			<text class="person-notice-time text-df text-center text-white">8:40</text>
-			您该服药了（请参照医生建议合理服药）
-		</view>
 		<view class="person-action flex justify-around margin-top-lg">
 			<view class="action-button text-center">
 				<button class="cu-btn cuIcon lg">
