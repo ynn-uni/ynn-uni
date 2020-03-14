@@ -42,6 +42,7 @@
 	.pannel {
 		margin-top: 20rpx;
 		padding-top: 20rpx;
+		overflow: hidden;
 		.cu-item .content .pannel-icon {
 			width: 40rpx;
 			height: 40rpx;

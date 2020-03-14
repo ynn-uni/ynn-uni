@@ -41,6 +41,5 @@
 		border-radius: 8px;
 		background: #fff;
 		box-shadow: 0px 2px 8px 0px #008c77;
-		overflow: hidden;
 	}
 </style>
