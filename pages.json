@@ -31,12 +31,12 @@
         "navigationBarTitleText": "药牛牛"
       }
     },
-		{
-			"path": "pages/recruit/recruit",
-			"style": {
-				"navigationBarTitleText": "征募报名"
-			}
-		},
+    {
+      "path": "pages/recruit/recruit",
+      "style": {
+        "navigationBarTitleText": "征募报名"
+      }
+    },
     {
       "path": "pages/recruit/rec_detail",
       "style": {
@@ -149,7 +149,7 @@
     "list": [
       {
         "name": "my", //模式名称
-        "path": "pages/my/my", //启动页面，必选
+        "path": "pages/message/list", //启动页面，必选
         "query": "" //启动参数，在页面的onLoad函数里面得到
       }
     ]
