@@ -11,14 +11,14 @@
 			<text class="uni-calendar-item__weeks-box-text" :class="{
 				'uni-calendar-item--isDay-text': weeks.isDay,
 				'uni-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
-				'uni-calendar-item--checked':calendar.fullDate === weeks.fullDate && !weeks.isDay,
+				'uni-calendar-item--checked_none':calendar.fullDate === weeks.fullDate && !weeks.isDay,
 				'uni-calendar-item--multiple': weeks.multiple,
 				'uni-calendar-item--disable':weeks.disable,
 				}">{{weeks.date}}</text>
 			<text v-if="!lunar&&!weeks.extraInfo && weeks.isDay" class="uni-calendar-item__weeks-lunar-text" :class="{
 				'uni-calendar-item--isDay-text':weeks.isDay,
 				'uni-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
-				'uni-calendar-item--checked':calendar.fullDate === weeks.fullDate && !weeks.isDay,
+				'uni-calendar-item--checked_none':calendar.fullDate === weeks.fullDate && !weeks.isDay,
 				'uni-calendar-item--multiple': weeks.multiple,
 				}">今天</text>
 			<text v-if="lunar&&!weeks.extraInfo" class="uni-calendar-item__weeks-lunar-text" :class="{
@@ -32,7 +32,7 @@
 				'uni-calendar-item--extra':weeks.extraInfo.info,
 				'uni-calendar-item--isDay-text':weeks.isDay,
 				'uni-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
-				'uni-calendar-item--checked':calendar.fullDate === weeks.fullDate && !weeks.isDay,
+				'uni-calendar-item--checked_none':calendar.fullDate === weeks.fullDate && !weeks.isDay,
 				'uni-calendar-item--multiple': weeks.multiple,
 				'uni-calendar-item--disable':weeks.disable,
 				}">{{weeks.extraInfo.info}}</text>
@@ -83,6 +83,9 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		background: #fff; // custom
+		border-radius: 8rpx; // custom
+		border: 1px solid transparent; // custom
 	}
 
 	.uni-calendar-item__weeks-box-text {
@@ -103,8 +106,8 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		width: 100rpx;
-		height: 100rpx;
+		width: 80rpx; // 100rpx; // custom
+		height: 96rpx; // 100rpx; // custom
 	}
 
 	.uni-calendar-item__weeks-box-circle {
@@ -114,12 +117,12 @@
 		width: 8px;
 		height: 8px;
 		border-radius: 8px;
-		background-color: $uni-color-error;
-
+		background-color: $uni-color-warning;
 	}
 
 	.uni-calendar-item--disable {
-		background-color: rgba(249, 249, 249, $uni-opacity-disabled);
+		// background-color: rgba(249, 249, 249, $uni-opacity-disabled);
+		background-color: rgb(249, 249, 249); // custom
 		color: $uni-text-color-disable;
 	}
 
@@ -134,14 +137,16 @@
 	}
 
 	.uni-calendar-item--extra {
-		color: $uni-color-error;
+		color: $uni-color-warning;
 		opacity: 0.8;
 	}
 
 	.uni-calendar-item--checked {
-		background-color: $uni-color-primary;
-		color: #fff;
-		opacity: 0.8;
+		// background-color: $uni-color-primary;
+		// color: #fff;
+		// opacity: 0.8;
+		// custom
+		border: 1px solid $uni-color-warning;
 	}
 
 	.uni-calendar-item--multiple {

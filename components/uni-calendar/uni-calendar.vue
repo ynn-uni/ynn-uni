@@ -26,7 +26,7 @@
 				</view>
 				<view class="uni-calendar__weeks">
 					<view class="uni-calendar__weeks-day">
-						<text class="uni-calendar__weeks-day-text">日</text>
+						<text class="uni-calendar__weeks-day-text uni-calendar__weekend">日</text>
 					</view>
 					<view class="uni-calendar__weeks-day">
 						<text class="uni-calendar__weeks-day-text">一</text>
@@ -44,7 +44,7 @@
 						<text class="uni-calendar__weeks-day-text">五</text>
 					</view>
 					<view class="uni-calendar__weeks-day">
-						<text class="uni-calendar__weeks-day-text">六</text>
+						<text class="uni-calendar__weeks-day-text uni-calendar__weekend">六</text>
 					</view>
 				</view>
 				<view class="uni-calendar__weeks" v-for="(item,weekIndex) in weeks" :key="weekIndex">
@@ -380,6 +380,7 @@
 
 	.uni-calendar__weeks-item {
 		flex: 1;
+		padding: 4rpx; // custom
 	}
 
 	.uni-calendar__weeks-day {
@@ -399,8 +400,13 @@
 		font-size: 14px;
 	}
 
+	.uni-calendar__weekend {  // custom
+		color: $uni-color-primary;
+	}
+	
 	.uni-calendar__box {
 		position: relative;
+		background-color: #f2f2f2; // custom
 	}
 
 	.uni-calendar__box-bg {
