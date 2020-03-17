@@ -10,7 +10,7 @@
 					<view class="cu-form-group">
 						<view class="title">姓名：</view>
 						<input
-							v-model="name"
+							v-model="archivesInfo.name"
 							placeholder="请输入您的真实姓名"
 							name="input"
 							placeholder-class="text-placeholder"
@@ -20,7 +20,7 @@
 					<view class="cu-form-group">
 						<view class="title">手机：</view>
 						<input
-							v-model="phone"
+							v-model="archivesInfo.phone"
 							placeholder="请输入您的手机号码"
 							name="input"
 							type="number"
@@ -49,7 +49,7 @@
 					<view class="cu-form-group">
 						<view class="title">身高：</view>
 						<input
-							v-model="height"
+							v-model="archivesInfo.height"
 							placeholder="请输入您的身高"
 							name="input"
 							type="number"
@@ -61,7 +61,7 @@
 					<view class="cu-form-group">
 						<view class="title">体重：</view>
 						<input
-							v-model="weight"
+							v-model="archivesInfo.weight"
 							placeholder="请输入您的体重"
 							type="number"
 							name="input"
@@ -73,7 +73,11 @@
 				</form>
 			</view>
 			<view class="submit-btn">
-				<button class="cu-btn round lg bg-primary" type="submit" @click="handleSubmit">提交</button>
+				<button
+					class="cu-btn round lg bg-primary"
+					type="submit"
+					@click="handleSubmit"
+				>{{ hasInfo ? '修改' : '提交' }}</button>
 			</view>
 		</view>
 	</view>
@@ -85,12 +89,8 @@
 		name: 'Archives',
 		data() {
 			return {
-				name: '',
-				phone: '',
-				birth: '',
-				sex: null,
-				height: null,
-				weight: null,
+				archivesInfo: {},
+				hasInfo: true,
 				rules: {
 					name: {
 						type: 'string',
@@ -105,15 +105,28 @@
 				}
 			}
 		},
+		mounted() {
+			this.getArchivesInfo()
+		},
 		methods: {
+			getArchivesInfo() {
+				this.archivesInfo = {
+					name: '',
+					phone: '',
+					birth: '',
+					sex: null,
+					height: null,
+					weight: null
+				}
+			},
 			handleBirthChange(e) {
-				this.birth = e.target.value
+				this.archivesInfo.birth = e.target.value
 			},
 			handleSexChange(e) {
-				this.sex = +e.target.value
+				this.archivesInfo.sex = +e.target.value
 			},
 			handleSubmit() {
-				const { name, phone, birth, sex, height, weight } = this
+				const { name, phone, birth, sex, height, weight } = this.archivesInfo
 				this.valdateForm({
 					name,
 					phone,
