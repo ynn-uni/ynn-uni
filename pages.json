@@ -80,15 +80,9 @@
       }
     },
     {
-      "path": "pages/my/projects",
+      "path": "pages/trial/detail",
       "style": {
-        "navigationBarTitleText": "项目管理"
-      }
-    },
-    {
-      "path": "pages/my/link",
-      "style": {
-        "navigationBarTitleText": "身份认定"
+        "navigationBarTitleText": "申请详情"
       }
     },
     {
