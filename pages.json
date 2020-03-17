@@ -149,8 +149,8 @@
     "list": [
       {
         "name": "my", //模式名称
-        "path": "pages/archives/archives", //启动页面，必选
-        "query": "" //启动参数，在页面的onLoad函数里面得到
+        "path": "pages/trial/detail", //启动页面，必选
+        "query": "id=1" //启动参数，在页面的onLoad函数里面得到
       }
     ]
   }
