@@ -1,7 +1,6 @@
 
 <script>
 	export default {
-		
 		onLaunch: function() {
 			console.log('App Launch')
 		},
@@ -14,9 +13,12 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	/*每个页面公共css */
-	@import "colorui/main.css";
-	@import "colorui/icon.css";
-	@import "colorui/animation.css";
+	@import 'colorui/main.css';
+	@import 'colorui/icon.css';
+	@import 'colorui/animation.css';
+
+	/* 命名可能会覆盖colorui的样式 */
+	@import 'styles/index.scss';
 </style>
