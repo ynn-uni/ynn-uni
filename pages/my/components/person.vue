@@ -1,8 +1,8 @@
 <template>
 	<view class="person pannel-shadow">
 		<view class="radius shadow">
-			<view class="person-avatar round">
-				<open-data type="userAvatarUrl" />
+			<view class="person-avatar round bg-white">
+				<open-data class="bg-white" type="userAvatarUrl" />
 			</view>
 			<view class="person-name text-df text-center">
 				<open-data type="userNickName" />

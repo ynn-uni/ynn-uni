@@ -18,7 +18,7 @@
 			return {
 				btnList: [
 					{
-						path: '/pages/my/apply',
+						path: '/pages/trial/apply',
 						icon: 'my-apply',
 						label: '试验申请'
 					},
