@@ -74,7 +74,7 @@
       }
     },
     {
-      "path": "pages/my/apply",
+      "path": "pages/trial/apply",
       "style": {
         "navigationBarTitleText": "试验申请"
       }
