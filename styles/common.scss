@@ -1,0 +1,55 @@
+/* 行为相关颜色 */
+.color-primary {
+  color: $uni-color-primary;
+}
+.color-success {
+  color: $uni-color-success;
+}
+.color-warning {
+  color: $uni-color-warning;
+}
+.color-error {
+  color: $uni-color-error;
+}
+
+/* 行为相关背景颜色 */
+.bg-primary {
+  background-color: $uni-color-primary;
+}
+.bg-success {
+  background-color: $uni-color-success;
+}
+.bg-warning {
+  background-color: $uni-color-warning;
+}
+.bg-error {
+  background-color: $uni-color-error;
+}
+
+/* 文字基本颜色 */
+.text-color {
+  color: $uni-text-color; //基本色
+}
+.text-inverse {
+  color: $uni-text-color-inverse; //反色
+}
+.text-grey {
+  color: $uni-text-color-grey; //辅助灰色，如加载更多的提示信息
+}
+.text-placeholder {
+  color: $uni-text-color-placeholder;
+}
+.text-disable {
+  color: $uni-text-color-disable;
+}
+
+/* 文字尺寸 */
+.text-sm {
+  font-size: $uni-font-size-sm;
+}
+.text-base {
+  font-size: $uni-font-size-base;
+}
+.text-lg {
+  font-size: $uni-font-size-lg;
+}

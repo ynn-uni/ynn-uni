@@ -31,12 +31,12 @@
         "navigationBarTitleText": "药牛牛"
       }
     },
-		{
-			"path": "pages/recruit/recruit",
-			"style": {
-				"navigationBarTitleText": "征募报名"
-			}
-		},
+    {
+      "path": "pages/recruit/recruit",
+      "style": {
+        "navigationBarTitleText": "征募报名"
+      }
+    },
     {
       "path": "pages/recruit/rec_detail",
       "style": {
@@ -56,6 +56,12 @@
       }
     },
     {
+      "path": "pages/archives/archives",
+      "style": {
+        "navigationBarTitleText": "健康档案"
+      }
+    },
+    {
       "path": "pages/my/about",
       "style": {
         "navigationBarTitleText": "关于我们"
@@ -68,21 +74,15 @@
       }
     },
     {
-      "path": "pages/my/apply",
+      "path": "pages/trial/apply",
       "style": {
         "navigationBarTitleText": "试验申请"
       }
     },
     {
-      "path": "pages/my/projects",
+      "path": "pages/trial/detail",
       "style": {
-        "navigationBarTitleText": "项目管理"
-      }
-    },
-    {
-      "path": "pages/my/link",
-      "style": {
-        "navigationBarTitleText": "身份认定"
+        "navigationBarTitleText": "申请详情"
       }
     },
     {
@@ -119,26 +119,26 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "iconPath": "static/images/home.jpg",
-        "selectedIconPath": "static/images/home_active.jpg",
+        "iconPath": "static/tabbar/home.jpg",
+        "selectedIconPath": "static/tabbar/home_active.jpg",
         "text": "首页"
       },
       {
         "pagePath": "pages/recruit/recruit",
-        "iconPath": "static/images/recruit.jpg",
-        "selectedIconPath": "static/images/recruit_active.jpg",
+        "iconPath": "static/tabbar/recruit.jpg",
+        "selectedIconPath": "static/tabbar/recruit_active.jpg",
         "text": "征募报名"
       },
       {
         "pagePath": "pages/news/news",
-        "iconPath": "static/images/news.jpg",
-        "selectedIconPath": "static/images/news_active.jpg",
+        "iconPath": "static/tabbar/news.jpg",
+        "selectedIconPath": "static/tabbar/news_active.jpg",
         "text": "新闻资讯"
       },
       {
         "pagePath": "pages/my/my",
-        "iconPath": "static/images/my.jpg",
-        "selectedIconPath": "static/images/my_active.jpg",
+        "iconPath": "static/tabbar/my.jpg",
+        "selectedIconPath": "static/tabbar/my_active.jpg",
         "text": "我的"
       }
     ]
@@ -149,8 +149,8 @@
     "list": [
       {
         "name": "my", //模式名称
-        "path": "pages/my/my", //启动页面，必选
-        "query": "" //启动参数，在页面的onLoad函数里面得到
+        "path": "pages/trial/detail", //启动页面，必选
+        "query": "id=1" //启动参数，在页面的onLoad函数里面得到
       }
     ]
   }

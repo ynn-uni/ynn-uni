@@ -1,10 +1,12 @@
 <template>
-	<view class="pannel pannel-shadow grid col-3">
-		<view v-for="(item, index) in btnList" :key="index">
-			<navigator :url="item.path" class="pannel-button flex flex-direction text-center" >
-				<image :src="'../../../static/icons/' + item.icon + '.png'"></image>
-				<text class="text-xs">{{ item.label }}</text>
-			</navigator>
+	<view class="pannel pannel-shadow">
+		<view class="cu-list menu">
+			<view class="cu-item arrow" v-for="(item, index) in btnList" :key="index">
+				<navigator class="content" hover-class="none" :url="item.path" open-type="redirect">
+					<image class="pannel-icon" :src="'../../../static/icons/' + item.icon + '.png'" />
+					<text>{{ item.label }}</text>
+				</navigator>
+			</view>
 		</view>
 	</view>
 </template>
@@ -14,31 +16,21 @@
 		name: 'PersonBtnPannel',
 		data() {
 			return {
-				btnList:[
+				btnList: [
 					{
-						path: '/pages/my/projects',
-						icon: 'my-list',
-						label: '项目管理'
-					}, {
-						path: '/pages/my/apply',
+						path: '/pages/trial/apply',
 						icon: 'my-apply',
 						label: '试验申请'
-					}, {
-						path: '/pages/my/link',
-						icon: 'my-link',
-						label: '家属绑定'
-					}, {
+					},
+					{
 						path: '/pages/my/about',
 						icon: 'my-about',
 						label: '关于我们'
-					}, {
+					},
+					{
 						path: '/pages/my/contact',
 						icon: 'my-contact',
 						label: '联系我们'
-					}, {
-						path: '/pages/my/setting',
-						icon: 'my-setting',
-						label: '设置'
 					}
 				]
 			}
@@ -50,16 +42,12 @@
 	.pannel {
 		margin-top: 20rpx;
 		padding-top: 20rpx;
-	}
-	.pannel-button {
-		width: 100rpx;
-		height: 100rpx;
-		margin: auto;
-		margin-bottom: 30rpx;
-		& image {
-			width: 44rpx;
-			height: 44rpx;
-			margin: auto;
+		overflow: hidden;
+		.cu-item .content .pannel-icon {
+			width: 40rpx;
+			height: 40rpx;
+			margin-right: 40rpx;
+			vertical-align: -8rpx;
 		}
 	}
 </style>

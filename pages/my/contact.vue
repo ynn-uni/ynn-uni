@@ -2,7 +2,7 @@
 	<view class="contact flex justify-center bg-white">
 		<view>
 			<view class="text-center">
-				<image class="contact-image"></image>
+				<image class="contact-image" src="../../static/images/login_logo.gif" />
 			</view>
 			<view class="contact-info flex flex-direction text-sm text-center">
 				<text>地址：重庆市沙坪坝区汉渝路181号（内科医技楼22楼）</text>
@@ -18,13 +18,9 @@
 <script>
 	export default {
 		data() {
-			return {
-				
-			}
+			return {}
 		},
-		methods: {
-			
-		}
+		methods: {}
 	}
 </script>
 
@@ -36,10 +32,7 @@
 			width: 430rpx;
 			height: 430rpx;
 			margin-bottom: 60rpx;
-			// TODO 更换背景图片
-			background: #39B54A;
 			background-size: cover;
-			
 		}
 		.contact-info {
 			margin: auto;
