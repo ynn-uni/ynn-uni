@@ -1,48 +1,52 @@
 <template>
 	<view class="schedule bg-white">
 		<uni-calendar :insert="true" :showMonth="false" :selected="selectedList" @change="handleChange" />
+		<!-- :range="true"
+			startDate="2020-03-10"
+		endDate="2020-03-22"-->
 		<view>
-			<view class="schedule-date padding bg-gray">{{ formatSelectedDate }}</view>
-			<view class="schedule-list padding-lr bg-white">
-				<view
-					class="schedule-item flex justify-between align-center solid-bottom padding-tb-sm"
-					v-for="(item, index) in scheduleList"
-					:key="index"
-				>
-					<view class="lg text-yellow cuIcon-favorfill padding-right-sm"></view>
-					<view class="flex-sub">{{ item.content }}</view>
-					<view class="schedule-time">{{ item.time }}</view>
+			<view class="schedule-tip bg-gray">
+				<view>
+					<text class="text-yellow cuIcon-favorfill padding-right-sm" />日程
 				</view>
 			</view>
+			<scheduleList :date="selectedDay" />
 		</view>
-		<view class="schedule-add bg-white">
-			<button class="cu-btn block margin-tb-sm round lg">点击添加</button>
+		<view class="schedule-add">
+			<button class="cu-btn margin-tb-sm cuIcon lg">
+				<text class="cuIcon-add"></text>
+			</button>
 		</view>
 	</view>
 </template>
 
 <script>
 	import uniCalendar from '@/components/uni-calendar/uni-calendar.vue'
+	import scheduleList from './components/scheduleList'
 	export default {
 		components: {
-			uniCalendar
+			uniCalendar,
+			scheduleList
 		},
 		data() {
 			return {
 				selectedList: [
 					{
-						date: '2020-02-10',
-						info: '已上传'
+						date: '2020-03-10',
+						info: '日程',
+						data: [
+							// 自定义数据
+						]
+					},
+					{
+						date: '2020-03-18',
+						info: '日程',
+						data: [
+							// 自定义数据
+						]
 					}
 				],
-				selectedDay: null,
-				scheduleList: []
-			}
-		},
-		computed: {
-			formatSelectedDate() {
-				// const [year, month, day] = this.selectedDay.split('-')
-				// return `${year}年${month}月${day}日`
+				selectedDay: null
 			}
 		},
 		mounted() {
@@ -52,46 +56,10 @@
 			init() {
 				const date = new Date()
 				this.selectedDay = date.toISOString().split('T')[0]
-				this.getSchedule()
 			},
 			handleChange(evt) {
 				console.log(evt)
 				this.selectedDay = evt.fullDate
-				this.getSchedule()
-			},
-			getSchedule(date) {
-				return [
-					{
-						id: 1,
-						content: '您该吃药了（请参照医生建议合理吃药）',
-						time: '8:20'
-					},
-					{
-						id: 2,
-						content: '您该吃药了（请参照医生建议合理吃药）',
-						time: '8:20'
-					},
-					{
-						id: 2,
-						content: '您该吃药了（请参照医生建议合理吃药）',
-						time: '8:20'
-					},
-					{
-						id: 2,
-						content: '您该吃药了（请参照医生建议合理吃药）',
-						time: '8:20'
-					},
-					{
-						id: 2,
-						content: '您该吃药了（请参照医生建议合理吃药）',
-						time: '8:20'
-					},
-					{
-						id: 4,
-						content: '您该上传今日症状',
-						time: '8:20'
-					}
-				]
 			}
 		}
 	}
@@ -100,25 +68,46 @@
 <style lang="scss" scoped>
 	.schedule {
 		min-height: 100vh;
-		.schedule-list {
-			padding-bottom: 90rpx;
-			.schedule-time {
-				font-size: 40rpx;
-				color: $uni-color-primary;
+
+		.schedule-tip {
+			padding: 10rpx 0;
+			padding-left: 10rpx;
+			color: $uni-text-color-grey;
+		}
+	}
+	.schedule-add {
+		position: fixed;
+		right: 0;
+		bottom: 40rpx;
+		padding: 30rpx 50rpx;
+
+		.cu-btn {
+			background: $uni-color-primary;
+			color: #fff;
+			font-size: 24px;
+		}
+	}
+	.schedule::v-deep {
+		.uni-calendar-item__weeks-box-circle {
+			width: 0;
+			height: 0;
+			bottom: 17px;
+			left: 2px;
+			top: unset;
+			right: unset;
+			color: #f0ad4e;
+
+			& {
+				font-family: 'cuIcon';
+				font-size: 20rpx;
+				font-style: normal;
+			}
+			&::before {
+				content: '\E64B';
 			}
 		}
-
-		.schedule-add {
-			position: fixed;
-			left: 0;
-			bottom: 0;
-			padding: 30rpx 50rpx;
-			width: 100%;
-
-			.cu-btn {
-				background: $uni-color-primary;
-				color: #fff;
-			}
+		.uni-calendar-item--extra {
+			margin-left: 1em;
 		}
 	}
 </style>
