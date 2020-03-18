@@ -1,20 +1,16 @@
 <template>
 	<view class="schedule bg-white">
-		<uni-calendar 
-		    :insert="true"
-			:showMonth="false"
-			:selected="selectedList"
-		    @change="handleChange"
-		/>
+		<uni-calendar :insert="true" :showMonth="false" :selected="selectedList" @change="handleChange" />
 		<view>
 			<view class="schedule-date padding bg-gray">{{ formatSelectedDate }}</view>
 			<view class="schedule-list padding-lr bg-white">
 				<view
 					class="schedule-item flex justify-between align-center solid-bottom padding-tb-sm"
-					v-for="(item, index) in scheduleList" :key="index"
+					v-for="(item, index) in scheduleList"
+					:key="index"
 				>
 					<view class="lg text-yellow cuIcon-favorfill padding-right-sm"></view>
-					<view class="flex-sub">{{ item.content }}</view>		
+					<view class="flex-sub">{{ item.content }}</view>
 					<view class="schedule-time">{{ item.time }}</view>
 				</view>
 			</view>
@@ -33,12 +29,13 @@
 		},
 		data() {
 			return {
-				selectedList: [{
-					date: '2020-02-10',
-					info: '已上传',
-					
-				}],
-				selectedDay: new Date.toISOString().split('T')[0],
+				selectedList: [
+					{
+						date: '2020-02-10',
+						info: '已上传'
+					}
+				],
+				selectedDay: null,
 				scheduleList: []
 			}
 		},
@@ -49,41 +46,52 @@
 			}
 		},
 		mounted() {
-			this.getSchedule()
-			console.log(new Date.toISOString())
+			this.init()
 		},
 		methods: {
+			init() {
+				const date = new Date()
+				this.selectedDay = date.toISOString().split('T')[0]
+				this.getSchedule()
+			},
 			handleChange(evt) {
 				console.log(evt)
 				this.selectedDay = evt.fullDate
 				this.getSchedule()
 			},
 			getSchedule(date) {
-				return [{
-					id: 1,
-					content: '您该吃药了（请参照医生建议合理吃药）',
-					time: '8:20'
-				}, {
-					id: 2,
-					content: '您该吃药了（请参照医生建议合理吃药）',
-					time: '8:20'
-				}, {
-					id: 2,
-					content: '您该吃药了（请参照医生建议合理吃药）',
-					time: '8:20'
-				}, {
-					id: 2,
-					content: '您该吃药了（请参照医生建议合理吃药）',
-					time: '8:20'
-				}, {
-					id: 2,
-					content: '您该吃药了（请参照医生建议合理吃药）',
-					time: '8:20'
-				}, {
-					id: 4,
-					content: '您该上传今日症状',
-					time: '8:20'
-				}]
+				return [
+					{
+						id: 1,
+						content: '您该吃药了（请参照医生建议合理吃药）',
+						time: '8:20'
+					},
+					{
+						id: 2,
+						content: '您该吃药了（请参照医生建议合理吃药）',
+						time: '8:20'
+					},
+					{
+						id: 2,
+						content: '您该吃药了（请参照医生建议合理吃药）',
+						time: '8:20'
+					},
+					{
+						id: 2,
+						content: '您该吃药了（请参照医生建议合理吃药）',
+						time: '8:20'
+					},
+					{
+						id: 2,
+						content: '您该吃药了（请参照医生建议合理吃药）',
+						time: '8:20'
+					},
+					{
+						id: 4,
+						content: '您该上传今日症状',
+						time: '8:20'
+					}
+				]
 			}
 		}
 	}
@@ -97,7 +105,7 @@
 			.schedule-time {
 				font-size: 40rpx;
 				color: $uni-color-primary;
-			}	
+			}
 		}
 
 		.schedule-add {
@@ -106,7 +114,7 @@
 			bottom: 0;
 			padding: 30rpx 50rpx;
 			width: 100%;
-			
+
 			.cu-btn {
 				background: $uni-color-primary;
 				color: #fff;
