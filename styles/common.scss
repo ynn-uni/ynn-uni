@@ -2,6 +2,9 @@
 .color-primary {
   color: $uni-color-primary;
 }
+.color-secondary {
+  color: $uni-color-secondary;
+}
 .color-success {
   color: $uni-color-success;
 }
@@ -11,10 +14,16 @@
 .color-error {
   color: $uni-color-error;
 }
+.color-info {
+  color: $uni-color-info;
+}
 
 /* 行为相关背景颜色 */
 .bg-primary {
   background-color: $uni-color-primary;
+}
+.bg-secondary {
+  background-color: $uni-color-secondary;
 }
 .bg-success {
   background-color: $uni-color-success;
@@ -24,6 +33,9 @@
 }
 .bg-error {
   background-color: $uni-color-error;
+}
+.bg-info {
+  background-color: $uni-color-info;
 }
 
 /* 文字基本颜色 */
