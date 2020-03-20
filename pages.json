@@ -7,18 +7,19 @@
     // 		"navigationBarTitleText": "当前开发页"
     // 	}
     // },
-    {
-      "path": "pages/login/login",
-      "style": {
-        "navigationBarTitleText": "药牛牛"
-      }
-    },
+   
     {
       "path": "pages/home/home",
       "style": {
         "navigationBarTitleText": "药牛牛"
       }
     },
+   {
+     "path": "pages/login/login",
+     "style": {
+       "navigationBarTitleText": "药牛牛"
+     }
+   },
     {
       "path": "pages/recruit/application",
       "style": {
@@ -47,6 +48,12 @@
       "path": "pages/news/news",
       "style": {
         "navigationBarTitleText": "新闻资讯"
+      }
+    },
+    {
+      "path": "pages/news/newsdetail",
+      "style": {
+        "navigationBarTitleText": "新闻详情"
       }
     },
     {
@@ -149,7 +156,7 @@
     "list": [
       {
         "name": "my", //模式名称
-        "path": "pages/trial/detail", //启动页面，必选
+        "path": "pages/home/home", //启动页面，必选
         "query": "id=1" //启动参数，在页面的onLoad函数里面得到
       }
     ]

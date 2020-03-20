@@ -6,14 +6,14 @@
 		
 		<view class="info">
 			<view class="data">
-				{{data.data}}
+				{{data.created_at}}
 			</view>
 			<view class="data">
-				{{data.num}}
+				{{data.clicks}}
 			</view>
 		</view>
 		<view class="bref">
-			<rich-text :nodes="data.bref"></rich-text>
+			<rich-text :nodes="data.content"></rich-text>
 		</view>
 		
 		<view class="btn_grou">
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+  import {getNewsDetails} from '@/apis/index.js'
 	export default {
 		data() {
 			return {
@@ -51,7 +52,8 @@
 			}
 		},
 		onLoad(option) {
-			console.log(option.id);
+      console.log(option.id)
+      this.initData(option.id)
 			},
 		onShareAppMessage(res) {
 		    if (res.from === 'button') {// 来自页面内分享按钮
@@ -63,7 +65,11 @@
 		    }
 		  },
 		methods: {
-			
+			initData(id){
+        getNewsDetails({id}).then((res)=>{
+          this.data=res.data
+        })
+      },
 			showModal(){
 				this.modalName='Image'
 			},

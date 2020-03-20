@@ -5,6 +5,7 @@
 			console.log('App Launch')
 		},
 		onShow: function() {
+      this.$store.dispatch('user/wxLogin');
 			console.log('App Show')
 		},
 		onHide: function() {

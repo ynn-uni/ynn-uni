@@ -3,23 +3,24 @@
 		<view class="title text-center">
 			{{data.title}}
 		</view>
-		<image class="cover" src="../../static/images/home_new.png" mode=""></image>
+		<!-- <image class="cover" :src="data.cover" mode=""></image> -->
+    <image class="cover" src="../../static/images/home_new.png" mode=""></image>
 		<view class="time">
-			报名时间：{{data.startDate}}~{{data.enddata}}
+			报名时间：{{data.start}}~{{data.end}}
 		</view>
 		<view class="info">
 			<view class="info_item">
 				年龄：{{data.age}}
 			</view>
 			<view class="info_item">
-				性别：{{data.gender}}
+				性别：{{data.sex}}
 			</view>
 			<view class="info_item">
-				其他：{{data.other}}
+				其他：{{data.condition}}
 			</view>
 		</view>
 		<view class="bref">
-			<rich-text :nodes="data.bref"></rich-text>
+			<rich-text :nodes="data.content"></rich-text>
 		</view>
 		
 		<view class="btn_group">
@@ -74,6 +75,9 @@
 </template>
 
 <script>
+  import {baseUrl} from '../../configs/index.js'
+  import {getRecruitDetails} from '@/apis/index.js'
+  import { mapGetters, mapActions, mapMutations } from 'vuex'
 	export default {
 		data() {
 			return {
@@ -93,10 +97,25 @@
 				
 			}
 		},
-		onLoad(option) {
-			console.log(option.id);
+    computed:{
+      ...mapGetters(['token'])
+    },
+    onLoad(option) {
+      console.log(option.id)
+      this.initData(option.id)
+    },
+		onShow() {
+     
 		},
 		methods: {
+      initData(id){
+        getRecruitDetails({id}).then((res)=>{
+          console.log(res,baseUrl)
+          this.data=res.data
+          this.data.cover=baseUrl+'/'+this.data.cover
+          console.log(this.data.cover)
+        })
+      },
 			showModal(){
 				this.modalName='Image'
 			},
@@ -110,7 +129,11 @@
 				})
 			},
 			handelApplication(){
-				if(this.status==0){
+        if(!this.token){
+          uni.navigateTo({
+          	url:"/pages/login/login"
+          })
+        }else if(this.status==0){
 					uni.navigateTo({
 						url:"/pages/recruit/application"
 					})
@@ -128,6 +151,7 @@
 <style scoped lang="scss">
 	.rec_detail{
 		background-color: #fff;
+    min-height: 100vh;
 		.title{
 			font-size: 36rpx;
 			color: #4a4a4a;
@@ -153,11 +177,11 @@
 		}
 		.bref{
 			
-				padding: 0 40rpx;
-				margin-left: 20rpx;
+				padding: 0 30rpx;
+				// margin-left: 20rpx;
 				margin-top: 20rpx;
-				font-size:26rpx;
-				line-height:36rpx;
+				// font-size:34rpx;
+				line-height:44rpx;
 				text-align: justify;
 				color:rgba(155,155,155,1);
 				padding-bottom: 300rpx;

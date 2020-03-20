@@ -84,7 +84,7 @@
 </template>
 
 <script>
-	import schema from 'async-validator'
+	// import schema from 'async-validator'
 	export default {
 		name: 'Archives',
 		data() {
@@ -127,14 +127,14 @@
 			},
 			handleSubmit() {
 				const { name, phone, birth, sex, height, weight } = this.archivesInfo
-				this.valdateForm({
-					name,
-					phone,
-					birth,
-					sex,
-					height,
-					weight
-				})
+				// this.valdateForm({
+				// 	name,
+				// 	phone,
+				// 	birth,
+				// 	sex,
+				// 	height,
+				// 	weight
+				// })
 					.then(res => {
 						uni.showToast({
 							title: '表单提交成功',

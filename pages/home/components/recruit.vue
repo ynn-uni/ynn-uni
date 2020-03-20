@@ -18,43 +18,41 @@
 		</view>
 		
 		<view class="list">
-			<view class="item" @click="handelRecDetail('1')">
+			<view class="item" v-for="(item,index) in list" :key="index" @click="handelRecDetail(item.id)">
 				<!-- <image class="my-bg" src="../../../static/images/home1.png" mode=""></image> -->
 				<image class="my-ri" src="../../../static/images/home_re1.png" mode=""></image>
 				<view class="content">
 					<view class="text">
-						琥珀酸曲格叻玎片叻玎片琥珀酸曲格叻玎片叻玎片琥珀酸曲格叻玎片叻玎片
+						{{item.title}}
 					</view>
 					<view class="re">
-						临床招募
+						{{item.type}}
 					</view>
 				</view>
 			</view>
-			<view class="item" @click="handelRecDetail('2')">
-				<!-- <image class="my-bg" src="../../../static/images/home1.png" mode=""></image> -->
-				<image class="my-ri1" src="../../../static/images/home_re2.png" mode=""></image>
-				<view class="content">
-					<view class="text">
-						琥珀酸曲格叻玎片叻玎片琥珀酸曲格叻玎片叻玎片琥珀酸曲格叻玎片叻玎片
-					</view>
-					<view class="re">
-						临床招募
-					</view>
-				</view>
-			</view>
+			
 		</view>
 	</view>
 </template>
 
 <script>
+  import {getRecruitList} from '@/apis/index.js'
+  import { mapGetters, mapActions, mapMutations } from 'vuex'
 	export default {
 		data() {
 			return {
-				list:['1','2']
+				list:[]
 			};
 		},
-		
+		mounted() {
+		  this.initData()
+		},
 		methods: {
+      initData(){
+        getRecruitList().then((res)=>{
+          this.list=res.data.data
+        })
+      },
 			handelRecDetail(id){
 				uni.navigateTo({
 					url:"/pages/recruit/rec_detail?id="+id

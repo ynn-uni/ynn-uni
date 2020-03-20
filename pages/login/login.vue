@@ -1,16 +1,17 @@
 <template>
-	<view class="login" v-if="!isregist">
+	<view class="login" >
 		<view class="content">
+      <button open-type="openSetting" bindopensetting="callback">打开设置页</button>
 			<image src="../../static/images/login_logo.gif" mode=""></image>
 			<text>重庆市肿瘤医院I期临床试验中心</text>
-			<button @click="login" v-if="a" open-type="getUserInfo"
-			bindgetuserinfo="bindGetUserInfo">微信授权</button>
-			<button v-if="!a" class="animation-slide-right" data-class="slide-right" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">电话号授权</button>
+			<button  open-type="getUserInfo" @getuserinfo="getUserInfo">微信授权</button>
+			<!-- <button v-if="!a" class="animation-slide-right" data-class="slide-right" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">电话号授权</button> -->
 		</view>
 	</view>
 </template>
 
 <script>
+  import { mapGetters, mapActions, mapMutations } from 'vuex'
 	export default {
 		data() {
 			return {
@@ -18,58 +19,40 @@
 				isregist:true,
 			}
 		},
+    computed:{
+      ...mapGetters(['token'])
+    },
+    watch:{
+      token(val,old){
+        if(val){
+          uni.switchTab({
+          	url:'/pages/home/home'
+          })
+        }
+      }
+    },
 		onLoad() {
-			var that=this;
-			uni.login({
-			     success(res){
-				 console.log(res.code);
-				 //此处添加向后台请求验证用户是否注册同时获取sessionkey
-				 if(that.isregist){
-				 	uni.switchTab({
-				 		url:'/pages/home/home'
-				 	})
-				 }
-				 
-			 }
-		   })
+			
 		},
 		methods: {
-			login(){
-				var that=this;
-				uni.getSetting({
-					 success(res) {
-						 console.log(res)
-					   if (res.authSetting['scope.userInfo']) {
-						console.log("scope.userInfo",res)
-						that.a=false
-						 // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-						
-						 
-					   }else{
-						   
-						   console.log('没授权')
-						   // resolve('DialogModal1')
-						  
-						   // that.showModal()
-					   }
-					 }
-				   })
-				
-			},
+      ...mapMutations('user', ['updateUserInfo']),
+      ...mapActions('user', [
+        'fatchDevListByToken',
+        'loginWithUserInfo'
+      ]),
+      getUserInfo(evt) {
+          const {iv, encryptedData,errMsg} = evt.detail;
+          if (errMsg === 'getUserInfo:ok') {
+          this.loginWithUserInfo({ iv, encryptedData });
+        }
+      },
 			getPhoneNumber(e){
 				console.log(e)
 				//此处向后台发送sessionKey、iv、encryptedData让后台获取用户手机号的代码
 				uni.switchTab({
 					url:'/pages/home/home'
 				})
-				// this.iv=e.detail.iv;
-				// this.encryptedData=e.detail.encryptedData;
-				// let detail={};
-				// detail.msg="确认手机授权";
-				// detail.iv=this.iv;
-				// detail.encryptedData=this.encryptedData
-				// console.log(detail)
-				// this.$emit("ListenChild",detail)
+			
 			},
 		}
 	}
