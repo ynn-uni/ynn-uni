@@ -1,10 +1,9 @@
 <template>
 	<view class="login" >
 		<view class="content">
-      <button open-type="openSetting" bindopensetting="callback">打开设置页</button>
 			<image src="../../static/images/login_logo.gif" mode=""></image>
 			<text>重庆市肿瘤医院I期临床试验中心</text>
-			<button  open-type="getUserInfo" @getuserinfo="getUserInfo">微信授权</button>
+			<button  open-type="getUserInfo" @getuserinfo="getUserInfo">微信授权登录</button>
 			<!-- <button v-if="!a" class="animation-slide-right" data-class="slide-right" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">电话号授权</button> -->
 		</view>
 	</view>
@@ -24,10 +23,10 @@
     },
     watch:{
       token(val,old){
-        if(val){
-          uni.switchTab({
-          	url:'/pages/home/home'
-          })
+        if(val!==old){
+         uni.navigateBack({
+            delta:1
+         })
         }
       }
     },
@@ -64,11 +63,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+	min-height: 100vh;
 	.content{
 		display: flex;
 		justify-content: center;

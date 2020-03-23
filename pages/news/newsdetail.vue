@@ -102,12 +102,9 @@
 	.rec_detail{
 		background-color: #fff;
 		padding: 30rpx;
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
+		min-height: 100vh;
 		overflow-y: scroll;
+    padding-bottom: 100rpx;
 		.title{
 			font-size: 36rpx;
 			color: #4a4a4a;

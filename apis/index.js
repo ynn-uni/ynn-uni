@@ -16,3 +16,13 @@ export const getRecruitList = (data = {}) => {
 export const getRecruitDetails = (data = {}) => {
   return getAction(`/Apis/Project/getProjectDetails`, data)
 }
+//幕政报名 /Apis/Enroll/addEnroll
+export const addEnroll = (data = {}) => {
+  return postAction(`/Apis/Enroll/addEnroll`, data)
+}
+export const getEnrollList = (data = {}) => {
+  return postAction(`/Apis/Enroll/getEnrollList`, data)
+}
+export const getEnrollDetails = (data = {}) => {
+  return postAction(`/Apis/Enroll/getEnrollDetails`, data)
+}

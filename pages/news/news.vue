@@ -1,6 +1,6 @@
 <template>
 	<view class="news">
-		<view class="hot">
+		<view class="hot" v-if="hotList.length">
 			<view class="title">
 				<view class="left">
 					<view class="line"></view>
@@ -25,43 +25,67 @@
 			
 		</view>
 		<view class="newslist">
-			<NewItem v-for="(item,index) in size" :key="index"></NewItem>
+			<NewItem v-for="(item,index) in data" :key="index" :data="item"></NewItem>
 		</view>
 		
 	</view>
 </template>
 
 <script>
+  import {getNewsList} from '../../apis/index.js'
 	import NewItem from './components/newItem.vue'
 	export default {
 		data() {
 			return {
-				 scrollTop: 0,
+				scrollTop: 0,
 				old: {
 					scrollTop: 0
 				},
-				size:10
+				size:10,
+        page:1,
+        data:[],
+        hotList:[]
 			}
 		},
 		components:{
 			NewItem
 		},
+    mounted() {
+      this.initData()
+    },
 		onReachBottom(){
 			var that=this
-			console.log("ppp")
-			uni.showLoading({
-				icon:'none'
-			})
-			setTimeout(function(){
-				that.size+=10
-				uni.hideLoading()
-			},1000)
+      uni.showLoading({
+        icon:'none'
+      })
+      setTimeout(function(){
+        that.page++
+        that.initData()
+      },1000)
 		},
 		methods: {
 			scroll: function(e) {
-			            console.log(e)
-			            this.old.scrollTop = e.detail.scrollTop
-			        },
+          this.old.scrollTop = e.detail.scrollTop
+      },
+      initData(){
+        let page=this.pagelet 
+        let size=this.size
+        getNewsList({page,size}).then((res)=>{
+          let data=res.data.data
+          if(page>1){
+            data.forEach((val)=>{
+              val.created_at=val.created_at.split(' ')[0]
+              this.data.push(val)
+            })
+          }else{
+             data.forEach((val)=>{
+               val.created_at=val.created_at.split(' ')[0]
+             })
+             this.data=data
+          }
+          uni.hideLoading()
+        })
+      }        
 		}
 	}
 </script>

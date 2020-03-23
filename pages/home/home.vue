@@ -1,7 +1,7 @@
 <template>
 	<view class="home">
      <button open-type="openSetting" bindopensetting="callback">打开设置页</button>
-		<Meaasge></Meaasge>
+		<!-- <Meaasge></Meaasge> -->
 		<Swiper></Swiper>
 		
 		<Recruit></Recruit>

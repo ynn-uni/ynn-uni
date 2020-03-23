@@ -19,7 +19,6 @@
 		
 		<view class="list">
 			<view class="item" v-for="(item,index) in list" :key="index" @click="handelRecDetail(item.id)">
-				<!-- <image class="my-bg" src="../../../static/images/home1.png" mode=""></image> -->
 				<image class="my-ri" src="../../../static/images/home_re1.png" mode=""></image>
 				<view class="content">
 					<view class="text">
@@ -72,6 +71,8 @@
 	.recruit{
 		padding: 0rpx 30rpx;
 		padding-top: 70rpx;
+    position: relative;
+    z-index: 10;
 		.title{
 			width: 100%;
 			display: flex;

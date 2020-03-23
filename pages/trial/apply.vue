@@ -10,10 +10,10 @@
 			>
 				<view class="content padding-tb-sm">
 					<view>
-						<text>{{ item.title }}</text>
+						<text>{{ item.project_info.title }}</text>
 					</view>
 					<view>
-						<text class="text-sm text-gray">{{ item.type }}</text>
+						<text class="text-sm text-gray">申请时间：{{item.created_at}}</text>
 					</view>
 				</view>
 				<view class="action">
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+  import {getEnrollList} from '../../apis/index.js'
 	import StatusPannel from './components/status-pannel'
 	import StatusTag from './components/status-tag'
 	export default {
@@ -34,7 +35,8 @@
 		components: { StatusPannel, StatusTag },
 		data() {
 			return {
-				activeStatus: null,
+				activeStatus: -1,
+        size:50,
 				statusMap: [
 					{
 						icon: 'apply-pending',
@@ -58,7 +60,7 @@
 		computed: {
 			filterList() {
 				const status = this.activeStatus
-				if (status != null) {
+				if (status != -1) {
 					return this.list.filter(item => item.status === status)
 				}
 				return this.list
@@ -69,24 +71,25 @@
 		},
 		methods: {
 			getApplyList() {
-				this.list = Array(10)
-					.fill(1)
-					.map((i, idx) => {
-						return {
-							id: idx,
-							title: '琥珀酸曲格叻玎片（空腹）志愿者',
-							type: '「临床试验」' + idx,
-							status: idx % 3
-						}
-					})
+        let size=this.size
+        let status=this.activeStatus
+        getEnrollList({size,status}).then((res)=>{
+          let data=res.data.data
+          this.list=[]
+          data.forEach((val)=>{
+            val.created_at=val.created_at.split(' ')[0]
+            this.list.push(val)
+          })
+        })
 			},
 			handleStatusChange(evt) {
 				const curStatus = this.activeStatus
 				if (curStatus === evt) {
-					this.activeStatus = null
+					this.activeStatus = -1
 				} else {
 					this.activeStatus = evt
 				}
+        this.getApplyList()
 			}
 		}
 	}

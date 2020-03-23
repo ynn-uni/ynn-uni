@@ -1,18 +1,18 @@
 <template>
 	<view class="rec-review">
-		<image v-if="status==1" src="../../static/icons/review.png" mode=""></image>
-		<image v-if="status==2" src="../../static/icons/check-circle.png" mode=""></image>
-		<image v-if="status==3" src="../../static/icons/close.png" mode=""></image>
-		<view class="text" v-if="status==1">
+		<image v-if="status==0" src="../../static/icons/review.png" mode=""></image>
+		<image v-if="status==1" src="../../static/icons/check-circle.png" mode=""></image>
+		<image v-if="status==2" src="../../static/icons/close.png" mode=""></image>
+		<view class="text" v-if="status==0">
 			资料提交成功（正在审核）
 		</view>
-		<view class="text" v-if="status==2||status==3">
+		<view class="text" v-if="status==1||status==2">
 			资料提交成功
 		</view>
-		<view class="text" v-if="status==3">
+		<view class="text" v-if="status==2">
 			您的条件不符合
 		</view>
-		<view class="text" v-if="status==1||status==2">
+		<view class="text" v-if="status==0||status==1">
 			工作人员会在2个工作日内电话联系您！
 		</view>
 		<view class="thank">
@@ -26,12 +26,11 @@
 	export default {
 		data() {
 			return {
-					status:1
+					status:0
 				
 			}
 		},
 		onLoad(option) {
-			console.log(option)
 			this.status=option.status;
 		},
 		methods: {
