@@ -7,7 +7,7 @@
 			@click="handleClick(item.status)"
 		>
 			<image :src="`../../../static/icons/${ item.icon }.png`" />
-			<text class="text-white">{{ item.label }}</text>
+			<text :class="item.status==activestatus?'text-orange':'text-white'">{{ item.label }}</text>
 		</view>
 	</view>
 </template>
@@ -20,7 +20,11 @@
 				type: Array,
 				required: true,
 				default: () => []
-			}
+			},
+      activestatus:{
+        type:String,
+        default:-1
+      }
 		},
 		methods: {
 			handleClick(status) {
@@ -33,8 +37,8 @@
 <style lang="scss" scoped>
 	.status-pannel {
 		background: #3bcdae;
-		margin-left: 30rpx;
-		margin-right: 30rpx;
+		margin-left: 10rpx;
+		margin-right: 10rpx;
 		margin-bottom: 20rpx;
 		padding: 24rpx 60rpx;
 		box-shadow: 0px 4px 6px 0px #d8fff7;

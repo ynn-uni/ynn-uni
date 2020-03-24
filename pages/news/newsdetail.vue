@@ -1,39 +1,45 @@
 <template>
-	<view class="rec_detail">
-		<view class="title">
-			{{data.title}}
-		</view>
-		
-		<view class="info">
-			<view class="data">
-				{{data.data}}
-			</view>
-			<view class="data">
-				{{data.num}}
-			</view>
-		</view>
-		<view class="bref">
-			<rich-text :nodes="data.bref"></rich-text>
-		</view>
-		
-		<view class="btn_grou">
-			
-			<button  class="cu-btn round"  open-type='share'>
-				
-				<image class="share" src="../../static/icons/share.png" mode=""></image>
-				分享
-		
-				
-			</button>
-			
-			
-		</view>
-		
-		
-	</view>
+  <view class="container">
+    <cu-custom :isBack="true" bgColor="bg-white">
+      <block slot="backText">返回</block>
+      <block slot="content">新闻详情</block>
+    </cu-custom>
+  
+    <view class="rec_detail">
+      <view class="title">
+        {{data.title}}
+      </view>
+      
+      <view class="info">
+        <view class="data">
+          {{data.created_at}}
+        </view>
+        <view class="data">
+          {{data.clicks}}
+        </view>
+      </view>
+      <view class="bref">
+        <rich-text :nodes="data.content"></rich-text>
+      </view>
+      
+      <view class="btn_grou" >
+        <button  class="cu-btn round"  open-type='share'  >
+          <image class="share" src="../../static/icons/share.png" mode=""></image>
+          分享
+        </button>
+        <view class="box" v-if="!token" @click="checkLogin">
+          
+        </view>
+      </view>
+      
+      
+    </view>
+  </view>
 </template>
 
 <script>
+  import { mapGetters} from 'vuex'
+  import {getNewsDetails} from '@/apis/index.js'
 	export default {
 		data() {
 			return {
@@ -50,8 +56,12 @@
 				
 			}
 		},
+    computed:{
+      ...mapGetters(['token'])
+    },
 		onLoad(option) {
-			console.log(option.id);
+      console.log(option.id)
+      this.initData(option.id)
 			},
 		onShareAppMessage(res) {
 		    if (res.from === 'button') {// 来自页面内分享按钮
@@ -63,7 +73,18 @@
 		    }
 		  },
 		methods: {
-			
+			initData(id){
+        getNewsDetails({id}).then((res)=>{
+          this.data=res.data
+        })
+      },
+      checkLogin(){
+        if(!this.token){
+          uni.navigateTo({
+          	url:"/pages/login/login"
+          })
+        }
+      },
 			showModal(){
 				this.modalName='Image'
 			},
@@ -93,15 +114,14 @@
 </script>
 
 <style scoped lang="scss">
+  .container{
+    background-color: #fff;
+    min-height: 100vh;
+  }
 	.rec_detail{
-		background-color: #fff;
 		padding: 30rpx;
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
 		overflow-y: scroll;
+    padding-bottom: 100rpx;
 		.title{
 			font-size: 36rpx;
 			color: #4a4a4a;
@@ -141,6 +161,13 @@
 					margin-right: 10rpx;
 				}
 			}
-		}
+		 .box{
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+     }
+    }
 	}
 </style>

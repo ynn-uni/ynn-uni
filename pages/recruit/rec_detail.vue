@@ -1,50 +1,58 @@
 <template>
 	<view class="rec_detail">
-		<view class="title text-center">
+    <cu-custom :isBack="true" bgColor="bg-white">
+      <block slot="backText">返回</block>
+      <block slot="content">征募详情</block>
+    </cu-custom>
+		<view class="title">
 			{{data.title}}
 		</view>
-		<image class="cover" src="../../static/images/home_new.png" mode=""></image>
+		<!-- <image class="cover" :src="data.cover" mode=""></image> -->
+    <view class="cover">
+      <image class="img" src="../../static/images/home_new.png" mode=""></image>
+    </view>
+    
 		<view class="time">
-			报名时间：{{data.startDate}}~{{data.enddata}}
+			报名时间：{{data.start}}~{{data.end}}
 		</view>
 		<view class="info">
 			<view class="info_item">
 				年龄：{{data.age}}
 			</view>
 			<view class="info_item">
-				性别：{{data.gender}}
+				性别：{{data.sex}}
 			</view>
 			<view class="info_item">
-				其他：{{data.other}}
+				其他：{{data.condition}}
 			</view>
 		</view>
 		<view class="bref">
-			<rich-text :nodes="data.bref"></rich-text>
+			<rich-text :nodes="data.content"></rich-text>
 		</view>
 		
 		<view class="btn_group">
 			
-			<button v-if="!isend" class="cu-btn" @tap="showModal">
+			<button v-if="data.status" class="cu-btn" @tap="showModal">
 				<view class="phone">
 					<image src="../../static/icons/rec_phone.png" mode=""></image>
 					资讯
 				</view>
 				
 			</button>
-			<button v-if="!isend" class="cu-btn" @click="handelApplication">
+			<button v-if="data.status" class="cu-btn" @click="handelApplication">
 				<view class="phone rec">
 					免费用药
 				</view>
 				
 			</button>
-			<button v-if="isend" class="cu-btn" >
+			<button v-if="!data.status" class="cu-btn" >
 				<view class="phone end_phone">
 					<image src="../../static/icons/end_phone.png" mode=""></image>
 					资讯
 				</view>
 				
 			</button>
-			<button v-if="isend" class="cu-btn">
+			<button v-if="!data.status" class="cu-btn">
 				<view class="phone end_rec" >
 					免费用药
 				</view>
@@ -59,7 +67,7 @@
 			<view class="cu-dialog">
 				<view class="tel">
 					<view class="">
-						400-800-4268
+						{{data.tel}}
 					</view>
 					
 				</view>
@@ -74,29 +82,46 @@
 </template>
 
 <script>
+  import {baseUrl} from '../../configs/index.js'
+  import {getRecruitDetails} from '@/apis/index.js'
+  import { mapGetters, mapActions, mapMutations } from 'vuex'
 	export default {
 		data() {
 			return {
 				status:0,//0未提交  1已提交未审核 2已提交审核通过 3已提交审核未通过
 				isend:false,
+        id:null,
 				modalName:null,
-					data:{
-						title:'琥珀酸曲格叻玎片（空腹）志愿者',
-						cover:'',
-						startDate:'2019.9.11',
-						enddata:'2019.9.16',
-						age:'18-45',
-						gender:'女性',
-						other:'乳腺癌患者',
-						bref:'<p>据统计，从2014年7月到现在，PD-1抗体药物已经在包括日本、美国、欧美、澳大利亚和中国香港在内的全球60多个地区上市，全球无数的瘤患者已经受益于这种抗癌新药。</p><p>目前，通过审批并上市的PD-1抑制剂主要有以下三个3个：</p><p>PD-1抗体Keytruda，由美国默沙东研制并通过临床上市；</p><p>PD-1抗体Opdivo，由美国百时美施贵宝研制并通过临床上市；</p><p>PD-L1抗体Tecentriq，由瑞士罗氏研制并通过临床上市。所以，目前上市的PD-1抗体药物都是由国外的制药公司生产。由于起步较晚和政策原因，国内还没有一家公司的PD-1抗体药物获得上市批准。</p><p>国内的肿瘤患者只能辗转香港等地区购买药物，花费巨大，一年大概百万人民币，绝大部分国内患者都负担不起。下面是目前主要的三种PD-1/PD-L1抗体药物的价格和年花费：</p>'
-					}
+					data:{}
 				
 			}
 		},
-		onLoad(option) {
-			console.log(option.id);
+    computed:{
+      ...mapGetters(['token'])
+    },
+    onLoad(option) {
+      this.id=option.id
+      
+    },
+		onShow() {
+      this.initData(this.id)
 		},
 		methods: {
+      initData(id){
+        getRecruitDetails({id}).then((res)=>{
+          console.log(res,baseUrl)
+          this.data=res.data
+          this.data.cover=baseUrl+'/'+this.data.cover
+        })
+      },
+      isAppplication(data){
+        if(!data.examine) return;
+        if(data.examine.enrolled==0){
+          return false
+        }else{
+          return true
+        }
+      },
 			showModal(){
 				this.modalName='Image'
 			},
@@ -110,13 +135,17 @@
 				})
 			},
 			handelApplication(){
-				if(this.status==0){
+        if(!this.token){
+          uni.navigateTo({
+          	url:"/pages/login/login"
+          })
+        }else if(this.data.examine.enrolled==0){
 					uni.navigateTo({
-						url:"/pages/recruit/application"
+						url:"/pages/recruit/application?id="+this.data.id
 					})
-				}else{
+				}else if(this.data.examine.enrolled==1){
 					uni.navigateTo({
-						url:"/pages/recruit/rec_status?status="+this.status
+						url:"/pages/recruit/rec_status?status="+this.data.examine.data.status
 					})
 				}
 				
@@ -128,13 +157,17 @@
 <style scoped lang="scss">
 	.rec_detail{
 		background-color: #fff;
+    min-height: 100vh;
 		.title{
 			font-size: 36rpx;
 			color: #4a4a4a;
-			padding: 20rpx 0;
+			padding: 20rpx 20rpx;
 		}
 		.cover{
-			width: 100%;
+			padding: 0 20rpx;
+      .img{
+        width: 100%;
+      }
 		}
 		.time{
 			margin-top: 28rpx;
@@ -153,11 +186,11 @@
 		}
 		.bref{
 			
-				padding: 0 40rpx;
-				margin-left: 20rpx;
+				padding: 0 30rpx;
+				// margin-left: 20rpx;
 				margin-top: 20rpx;
-				font-size:26rpx;
-				line-height:36rpx;
+				// font-size:34rpx;
+				line-height:44rpx;
 				text-align: justify;
 				color:rgba(155,155,155,1);
 				padding-bottom: 300rpx;

@@ -1,83 +1,144 @@
 <template>
+  <view class="container">
+    <cu-custom :isBack="true" class="text-white">
+      <block slot="backText">返回</block>
+      <block slot="content">申情免费用药</block>
+    </cu-custom>
+ 
 	<view class="application">
-		<form >
-			<view class="form">
-				<view class="title">
-					请认真填写下列内容
-					<text>（信息内容我们会为你保密）</text>
-				</view>
-				<view class="formgroup">
-					<view class="">
-						1.患者的姓名：
-					</view>
-					<input placeholder="请输入患者的姓名" name="input"></input>
-				</view>
-				<view class="formgroup">
-					<view class="">
-						2.患者的电话：
-					</view>
-					<input placeholder="请输入患者的电话" name="input"></input>
-				</view>
-				<view class="formgroup">
-					<view class="">
-						3.患者的出生日期：
-					</view>
-					<input placeholder="请输入患者的出生日期" name="input"></input>
-				</view>
-				<view class="formgroup">
-					<view class="">
-						4.患者的性别：
-					</view>
-					<radio-group class="block" @change="RadioChange">
-						<radio class=' radio ra' :class="radio=='C'?'checked':''" :checked="radio=='C'?true:false" value="C"></radio>男
-						<radio class=' radio ra' :class="radio=='D'?'checked':''" :checked="radio=='D'?true:false" value="D"></radio>女
-					</radio-group>
-				</view>
-				<view class="formgroup">
-					<view class="">
-						5.患者的疾病史：
-					</view>
-					<textarea value="" placeholder="请输入患者的疾病史" />
-					<!-- <input placeholder="请输入患者的疾病史" name="input"></input> -->
-				</view>
-				
-			</view>
-			<view class="note text-center margin-top-xs">
-				注：请携带相关资料，比如病例、检测报告等资料
-			</view>
-			<view class="treaty">
-				<radio-group class="block" @change="RadioChange1">
-					<radio class=' radio black tr-re' :class="radio1=='C'?'checked':''" :checked="radio1=='C'?true:false" value="C"></radio>
-					<text @click="treaty">我已阅读，并同意接受相关条约</text>
-				</radio-group>
-				
-			</view>
-			<view class="btn">
-				<button > 报名</button>
-			</view>
-			<view class="cancel text-center" @click="cancal">
-				取消
-			</view>
-		</form>
+		
+    <bjx-form
+        labelType="inline"
+        :rules="rules"
+        labelWidth="100"
+        :form="form"
+        msg-type="msg"
+        ref="form">
+        <view class="form">
+          <view class="title">
+          	请认真填写下列内容
+          	<text>（信息内容我们会为你保密）</text>
+          </view>
+          <view class="formgroup">
+            <bjx-form-item labelType="block" label="1.患者的姓名:" prop="truename" > 
+                <input  v-model="form.truename" class="input" name="truename" placeholder="请输入患者姓名" type="text" />
+            </bjx-form-item>
+          </view>
+          <view class="formgroup">
+            <bjx-form-item labelType="block" label="2.患者的电话号码:" prop="mobile" > 
+                <input  v-model="form.mobile" class="input" name="mobile" placeholder="请输入患者电话号码" type="number"/>
+            </bjx-form-item>
+          </view>
+          <view class="formgroup">
+            <bjx-form-item labelType="block" label="3.患者出生日期:" prop="birthday" >
+              <picker name="birthday" mode="date" @change="bindDateChange" v-model="form.birthday">
+                  <view class="uni-input birthday">{{form.birthday?form.birthday:'请选择患者出生日期'}}</view>
+              </picker>
+            </bjx-form-item>
+          </view>
+         <view class="formgroup">
+            <bjx-form-item labelType="block" label="4.患者的性别：" prop="sex" >
+              <radio-group class="block" @change="RadioChange" name="sex" v-model="form.sex">
+              	<radio class=' radio ra' :class="form.sex==1?'checked':''" :checked="form.sex==1?true:false" :value="1"></radio>男
+              	<radio class=' radio ra' :class="form.sex==2?'checked':''" :checked="form.sex==2?true:false" :value="2"></radio>女
+              </radio-group>
+            </bjx-form-item>
+          </view>
+          <view class="formgroup">
+            <bjx-form-item labelType="block" label="5.患者的疾病史：" prop="history" >
+              <textarea placeholder="请输入患者的疾病史" name="history" v-model="form.history"/>
+            </bjx-form-item>
+          </view>
+        </view>
+        <view class="note text-center margin-top-xs">
+        	注：请携带相关资料，比如病例、检测报告等资料
+        </view>
+        <view class="treaty flex justify-center align-center">
+        	<label>
+        		<checkbox value="cb" checked="true" color="#FFFFFF" style="transform:scale(0.7)" /><text @click.stop="treaty">我已阅读，并同意接受相关条约</text>
+        	</label>
+        </view>
+        <view class="btn">
+        	<button form-type="submit" @tap="submit"> 报名</button>
+        </view>
+        <view class="cancel text-center" @click="cancal">
+        	取消
+        </view>
+    </bjx-form>
 	</view>
+  </view>
 </template>
 
 <script>
+  import bjxForm from '@/components/bjx-form/bjx-form.vue'
+  import bjxFormItem from '@/components/bjx-form/bjx-form-item.vue'
+  import {addEnroll} from '../../apis/index.js'
 	export default {
 		data() {
 			return {
 				radio:null,
-				radio1:null
-				
+				radio1:null,
+				id:null,
+        birthday:null,
+        form: {
+            project:'',
+            truename: '',
+            mobile: '',
+            birthday:'',
+            sex:'',
+            history:''
+        },
+        rules: {
+            truename: {required: true,msg:'请输入患者姓名'},
+            mobile: {required: true,msg:'请输入患者电话号'},
+            birthday:{required: true,msg:'请选择患者出生日期'},
+            sex:{required: true,msg:'请选择患者性别'},
+            history:{required: true,msg:'请输入患者疾病史'}
+        }
 			}
 		},
-		
+    components:{
+       bjxForm,
+       bjxFormItem
+    },
+		onLoad(option){
+      this.form.project=option.id
+    },
 		methods: {
+      submit() {
+          this.$refs.form.validate(val => {
+            if(!val) return
+              addEnroll(this.form).then((res)=>{
+                console.log(res)
+                if(res.status==200){
+                  uni.showToast({
+                    title:'提交成功',
+                    icon:'none'
+                  })
+                  setTimeout(()=>{
+                    uni.navigateBack({
+                      delta:1
+                    })
+                  },1000)
+                }else{
+                  uni.showToast({
+                    title:res.msg,
+                    icon:'none'
+                  })
+                }
+                 
+                 
+              })
+          })
+      },
+      bindDateChange(e){
+        this.form.birthday = e.target.value
+      },
 			RadioChange(e) {
-				this.radio = e.detail.value
+				this.form.sex= e.detail.value
 			},
 			RadioChange1(e) {
-				this.radio1 = e.detail.value
+				this.form.sex = e.detail.value
 			},
 			treaty(){
 				uni.navigateTo({
@@ -85,25 +146,24 @@
 				})
 			},
 			cancal(){
-				console.log("11")
 				uni.navigateBack({
 					delta:1
 				})
 			}
+      
 		}
 	}
 </script>
 
 <style scoped lang="scss">
+  .container{
+    min-height: 100vh;
+    background:linear-gradient(150deg,rgba(61,223,174,1) 0%,rgba(54,174,173,1) 100%);
+  }
 	.application{
-		position: fixed;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
 		overflow-y:scroll ;
 		padding: 30rpx;
-		background:linear-gradient(150deg,rgba(61,223,174,1) 0%,rgba(54,174,173,1) 100%);
+		height:calc(100vh - 120rpx);
 		.form{
 			width: 690rpx;
 			// height: 200rpx;
@@ -120,7 +180,7 @@
 			}
 			.formgroup{
 				margin-top: 10rpx;
-				input,textarea{
+				input,textarea,.birthday{
 					margin-top: 10rpx;
 					border: 2rpx solid rgba(151,151,151,1);
 					height: 72rpx;
@@ -128,9 +188,14 @@
 					color:rgba(155,155,155,1);
 					padding-left: 20rpx;
 				}
+        .birthday{
+          line-height: 72rpx;
+        }
 				textarea{
 					width: 100%;
 					height: 200rpx;
+          overflow-y: scroll;
+          padding-top: 10rpx;
 				}
 				.ra{
 					margin:10rpx 10rpx;
@@ -145,9 +210,7 @@
 			margin-top: 10rpx;
 		}
 		.treaty{
-			display: flex;
-			margin-left: 30rpx;
-			margin-top: 52rpx;
+      margin-top: 20rpx;
 			.tr-re{
 				margin: 10rpx;
 			}

@@ -1,10 +1,10 @@
 <template>
-	<view class="item" @click="handelNewsDetail('1')">
+	<view class="item" @click="handelNewsDetail(data.id)">
 		<view class="title">
 			{{data.title}}
 		</view>
 		<view class="bref">
-			{{data.bref}}
+			{{data.abstract}}
 		</view>
 		<view class="img">
 			<image src="../../../static/images/home_new.png" mode=""></image>
@@ -12,10 +12,10 @@
 		</view>
 		<view class="info">
 			<view class="num">
-				{{data.redNum}}人看过
+				{{data.clicks}}人看过
 			</view>
 			<view class="data">
-				{{data.data}}
+				{{data.created_at}}
 			</view>
 		</view>
 	</view>
@@ -25,18 +25,21 @@
 	export default {
 		data() {
 			return {
-				data:{
-					title:'重庆市肿瘤医院1期临床试验研一期顺利开展期顺利开展',
-					bref:'新药临床试验的最终目的是在于寻求有效且安全新药临床试验的最终目的是在于寻求有效且安全新药临床试验的最终目的是在于寻求有效且安全新药临床试验的最终目的是',
-					redNum:'550',
-					data:'2019-09-11'
-				}
 			}
 		},
+    props:{
+      data:{
+        type:Object,
+        default:()=>{}
+      }
+    },
+    onShow() {
+      console.log(this.data)
+    },
 		methods: {
 			handelNewsDetail(id){
 				uni.navigateTo({
-					url:"/pages/news/newsdetail"
+					url:"/pages/news/newsdetail?id="+id
 				})
 			}
 		}

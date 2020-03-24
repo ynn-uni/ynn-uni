@@ -1,6 +1,10 @@
 <template>
 	<view class="home">
-		<Meaasge></Meaasge>
+    <cu-custom bgColor="bg-white">
+      <block slot="content">肿瘤医院</block>
+    </cu-custom>
+     <button open-type="openSetting" bindopensetting="callback">打开设置页</button>
+		<!-- <Meaasge></Meaasge> -->
 		<Swiper></Swiper>
 		
 		<Recruit></Recruit>
@@ -40,5 +44,6 @@
 <style lang="scss" scoped>
 	.home{
 		background-color: #fff;
+    min-height: 100vh;
 	}
 </style>

@@ -1,9 +1,18 @@
 <template>
-	<view class="my-page">
-		<Person />
-		<Record />
-		<Pannel />
-	</view>
+  <view class="container">
+    <cu-custom >
+      <block slot="content">
+    	  <view class="text text-white">
+    	  	我的
+    	  </view>
+    	</block>
+    </cu-custom>
+    <view class="my-page">
+      <Person />
+      <Record />
+      <Pannel />
+    </view>
+  </view>
 </template>
 
 <script>
@@ -25,17 +34,22 @@
 </script>
 
 <style lang="scss">
+  .container{
+    min-height: 100vh;
+    background: linear-gradient(
+    	150deg,
+    	rgba(61, 223, 174, 1) 0%,
+    	rgba(54, 174, 173, 1) 100%
+    );
+  }
 	.my-page {
-		min-height: 100vh;
+    box-sizing: border-box;
 		padding-left: 40rpx;
 		padding-right: 40rpx;
 		padding-top: 100rpx;
 		padding-bottom: 100rpx;
-		background: linear-gradient(
-			150deg,
-			rgba(61, 223, 174, 1) 0%,
-			rgba(54, 174, 173, 1) 100%
-		);
+    // 
+    // height:calc(100vh - 100rpx);
 	}
 	.pannel-shadow {
 		border-radius: 8px;

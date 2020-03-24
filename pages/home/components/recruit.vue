@@ -10,51 +10,50 @@
 			</view>
 			
 		</view>
-		<view class="rec_go">
+		<view class="rec_go" @click="handelRecDetail(firstData.id)">
 			<image class="rec_img" src="../../../static/images/home_recgo.jpg" mode=""></image>
 			<view class="box">
-				琥珀酸曲格勒汀片志愿者
+				{{firstData.title}}
 			</view>
 		</view>
 		
 		<view class="list">
-			<view class="item" @click="handelRecDetail('1')">
-				<!-- <image class="my-bg" src="../../../static/images/home1.png" mode=""></image> -->
+			<view class="item" v-for="(item,index) in list" :key="index" @click="handelRecDetail(item.id)">
 				<image class="my-ri" src="../../../static/images/home_re1.png" mode=""></image>
 				<view class="content">
 					<view class="text">
-						琥珀酸曲格叻玎片叻玎片琥珀酸曲格叻玎片叻玎片琥珀酸曲格叻玎片叻玎片
+						{{item.title}}
 					</view>
 					<view class="re">
-						临床招募
+						{{item.type}}
 					</view>
 				</view>
 			</view>
-			<view class="item" @click="handelRecDetail('2')">
-				<!-- <image class="my-bg" src="../../../static/images/home1.png" mode=""></image> -->
-				<image class="my-ri1" src="../../../static/images/home_re2.png" mode=""></image>
-				<view class="content">
-					<view class="text">
-						琥珀酸曲格叻玎片叻玎片琥珀酸曲格叻玎片叻玎片琥珀酸曲格叻玎片叻玎片
-					</view>
-					<view class="re">
-						临床招募
-					</view>
-				</view>
-			</view>
+			
 		</view>
 	</view>
 </template>
 
 <script>
+  import {getRecruitList} from '@/apis/index.js'
+  import { mapGetters, mapActions, mapMutations } from 'vuex'
 	export default {
 		data() {
 			return {
-				list:['1','2']
+				list:[],
+				firstData:{}
 			};
 		},
-		
+		mounted() {
+		  this.initData()
+		},
 		methods: {
+      initData(){
+        getRecruitList().then((res)=>{
+          this.list=res.data.data
+          this.firstData=res.data.data[0]
+        })
+      },
 			handelRecDetail(id){
 				uni.navigateTo({
 					url:"/pages/recruit/rec_detail?id="+id
@@ -74,6 +73,8 @@
 	.recruit{
 		padding: 0rpx 30rpx;
 		padding-top: 70rpx;
+    position: relative;
+    z-index: 10;
 		.title{
 			width: 100%;
 			display: flex;
@@ -114,7 +115,7 @@
 				top: 46rpx;
 				left: 180rpx;
 				color: #fff;
-				font-size: 44rpx;
+				font-size: 40rpx;
 				font-style: italic;
 				overflow : hidden;
 				text-overflow: ellipsis;

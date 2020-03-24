@@ -1,18 +1,25 @@
 <template>
+  <view class="container">
+    <cu-custom :isBack="true" bgColor="bg-white">
+      <block slot="backText">返回</block>
+      <block slot="content">幕征报名</block>
+    </cu-custom>
+  
 	<view class="rec-review">
-		<image v-if="status==1" src="../../static/icons/review.png" mode=""></image>
-		<image v-if="status==2" src="../../static/icons/check-circle.png" mode=""></image>
-		<image v-if="status==3" src="../../static/icons/close.png" mode=""></image>
-		<view class="text" v-if="status==1">
+   
+		<image v-if="status==0" src="../../static/icons/review.png" mode=""></image>
+		<image v-if="status==1" src="../../static/icons/check-circle.png" mode=""></image>
+		<image v-if="status==2" src="../../static/icons/close.png" mode=""></image>
+		<view class="text" v-if="status==0">
 			资料提交成功（正在审核）
 		</view>
-		<view class="text" v-if="status==2||status==3">
+		<view class="text" v-if="status==1||status==2">
 			资料提交成功
 		</view>
-		<view class="text" v-if="status==3">
+		<view class="text" v-if="status==2">
 			您的条件不符合
 		</view>
-		<view class="text" v-if="status==1||status==2">
+		<view class="text" v-if="status==0||status==1">
 			工作人员会在2个工作日内电话联系您！
 		</view>
 		<view class="thank">
@@ -20,18 +27,18 @@
 		</view>
 		<button @click="back">返回</button>
 	</view>
+ </view>
 </template>
 
 <script>
 	export default {
 		data() {
 			return {
-					status:1
+					status:0
 				
 			}
 		},
 		onLoad(option) {
-			console.log(option)
 			this.status=option.status;
 		},
 		methods: {
@@ -45,18 +52,16 @@
 </script>
 
 <style scoped lang="scss">
+  .container{
+    min-height: 100vh;
+    background-color: #fff;
+  }
 	.rec-review{
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		position: fixed;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		left: 0;
 		font-size:32rpx;
 		color:rgba(74,74,74,1);
-		background-color: #fff;
 		image{
 			width: 172rpx;
 			height: 172rpx;

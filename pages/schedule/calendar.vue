@@ -1,9 +1,10 @@
 <template>
 	<view class="schedule bg-white">
+		<cu-custom :isBack="true" bgcolor="bg-white">
+			<block slot="backText">返回</block>
+			<block slot="content">日程管理</block>
+		</cu-custom>
 		<uni-calendar :insert="true" :showMonth="false" :selected="selectedList" @change="handleChange" />
-		<!-- :range="true"
-			startDate="2020-03-10"
-		endDate="2020-03-22"-->
 		<view>
 			<view class="schedule-tip bg-gray">
 				<view>
@@ -56,14 +57,22 @@
 			this.init()
 			this.handleAdd()
 		},
+		computed: {
+			formatSelectedDate() {
+				const [year, month, day] = this.selectedDay.split('-')
+				return `${year}年${month}月${day}日`
+			}
+		},
+		mounted() {
+			this.scheduleList = this.getSchedule()
+		},
 		methods: {
 			init() {
 				const date = new Date()
 				this.selectedDay = date.toISOString().split('T')[0]
 			},
 			handleChange(evt) {
-				console.log(evt)
-				this.selectedDay = evt.fullDate
+				this.selectedDay = evt.fulldate
 			},
 			handleAdd() {
 				this.$refs.schedulePopup.open()

@@ -1,16 +1,9 @@
 {
   "pages": [
-    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-    // {
-    // 	"path": "pages/schedule/calendar",
-    // 	"style": {
-    // 		"navigationBarTitleText": "当前开发页"
-    // 	}
-    // },
     {
-      "path": "pages/login/login",
+      "path": "pages/my/my",
       "style": {
-        "navigationBarTitleText": "药牛牛"
+        "navigationBarTextStyle":"white"
       }
     },
     {
@@ -19,10 +12,23 @@
         "navigationBarTitleText": "药牛牛"
       }
     },
+   {
+     "path": "pages/login/login",
+     "style": {
+       "navigationBarTitleText": "药牛牛"
+     }
+   },
     {
       "path": "pages/recruit/application",
       "style": {
-        "navigationBarTitleText": "申请免费用药"
+        "navigationBarTitleText": "申请免费用药",
+        "navigationBarTextStyle":"white"
+      }
+    },
+    {
+      "path": "pages/recruit/rec_status",
+      "style": {
+        "navigationBarTitleText": "幕征报名"
       }
     },
     {
@@ -50,11 +56,12 @@
       }
     },
     {
-      "path": "pages/my/my",
+      "path": "pages/news/newsdetail",
       "style": {
-        "navigationBarTitleText": "我的"
+        "navigationBarTitleText": "新闻详情"
       }
     },
+    
     {
       "path": "pages/archives/archives",
       "style": {
@@ -108,7 +115,8 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "肿瘤医院",
     "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle":"custom"
   },
   "tabBar": {
     "color": "#4A4A4A",
@@ -145,13 +153,13 @@
   },
   "condition": {
     //模式配置，仅开发期间生效
-    "current": 0, //当前激活的模式(list 的索引项)
-    "list": [
-      {
-        "name": "my", //模式名称
-        "path": "pages/trial/detail", //启动页面，必选
-        "query": "id=1" //启动参数，在页面的onLoad函数里面得到
-      }
-    ]
+    // "current": 0, //当前激活的模式(list 的索引项)
+    // "list": [
+    //   {
+    //     "name": "my", //模式名称
+    //     "path": "pages/my/my", //启动页面，必选
+    //     "query": "id=1" //启动参数，在页面的onLoad函数里面得到
+    //   }
+    // ]
   }
 }

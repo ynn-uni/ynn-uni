@@ -11,21 +11,21 @@
 			
 		</view>
 		<view class="list">
-			<view class="item" v-for="(item,index) in newsList" :key="index" @click="handelNewsDetail(index)">
+			<view class="item" v-for="(item,index) in newsList" :key="index" @click="handelNewsDetail(item.id)">
 				<image src="../../../static/images/home_new.png" mode=""></image>
 				<view class="text">
 					<view class="title">
 						{{item.title}}
 					</view>
 					<view class="dis">
-						{{item.dis}}
+						{{item.abstract}}
 					</view>
-					<view class="info">
+					<view class="info flex justify-between align-center">
 						<view class="look_num">
-							{{item.look_num}}人看过
+							{{item.clicks}}人看过
 						</view>
 						<view class="data">
-							{{item.data}}
+							{{item.created_at}}
 						</view>
 					</view>
 				</view>
@@ -35,48 +35,40 @@
 </template>
 
 <script>
+  import {getNewsList} from '@/apis/index.js'
 	export default {
 		data() {
 			return {
-				newsList:[
-					{
-						title:"重庆市肿瘤医院1期临床试验研重庆市肿瘤医院1期临床试验研",
-						dis:"新药临床试验的最终目的是在于寻求有效且安全新药临床试验的最终目的是在于寻求有效且安全",
-						look_num:"785",
-						data:'2019-09-11'
-					},
-					{
-						title:"重庆市肿瘤医院1期临床试验研重庆市肿瘤医院1期临床试验研",
-						dis:"新药临床试验的最终目的是在于寻求有效且安全新药临床试验的最终目的是在于寻求有效且安全",
-						look_num:"785",
-						data:'2019-09-11'
-					},
-					{
-						title:"重庆市肿瘤医院1期临床试验研重庆市肿瘤医院1期临床试验研",
-						dis:"新药临床试验的最终目的是在于寻求有效且安全新药临床试验的最终目的是在于寻求有效且安全",
-						look_num:"785",
-						data:'2019-09-11'
-					},
-					{
-						title:"重庆市肿瘤医院1期临床试验研重庆市肿瘤医院1期临床试验研",
-						dis:"新药临床试验的最终目的是在于寻求有效且安全新药临床试验的最终目的是在于寻求有效且安全",
-						look_num:"785",
-						data:'2019-09-11'
-					},
-				]
+				newsList:[]
 			};
 		},
-		
+		mounted() {
+		  this.getnewslist()
+		},
 		methods: {
-			
+			getnewslist(){
+        getNewsList().then((res)=>{
+          let data=res.data.data
+          data.forEach((val)=>{
+            // if(val.hot){
+              val.created_at=this.initDate(val.created_at)
+              this.newsList.push(val)
+            // }
+          })
+        })
+      },
+      initDate(data){
+        if(!data) return
+        return data.split(' ')[0]
+      },
 			handelNewsList(){
 				uni.switchTab({
 					url:'/pages/news/news'
 				})
 			},
-			handelNewsDetail(){
+			handelNewsDetail(id){
 				uni.navigateTo({
-					url:'/pages/news/newsdetail'
+					url:'/pages/news/newsdetail?id='+id
 				})
 			},
 	
@@ -127,7 +119,7 @@
 				}
 				.text{
 					width: 404rpx;
-					height: 178rpx;
+					height: 100%;
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
@@ -152,12 +144,10 @@
 						-webkit-box-orient: vertical;
 					}
 					.info{
-						display: flex;
 						width: 100%;
-						justify-content: space-between;
 						font-size:24rpx;
 						color:rgba(155,155,155,1);
-						line-height:24px;
+            margin-top: 20upx;
 					}
 				}
 			}

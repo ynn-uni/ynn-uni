@@ -1,90 +1,96 @@
 <template>
-	<view class="archives">
-		<view class="cu-avatar round lg">
-			<open-data type="userAvatarUrl" />
-		</view>
-		<view class="archives-content">
-			<view class="archives-tips">为了给您提供更准确的健康管理服务 请务必如实填写一下资料</view>
-			<view class="archives-form">
-				<form>
-					<view class="cu-form-group">
-						<view class="title">姓名：</view>
-						<input
-							v-model="archivesInfo.name"
-							placeholder="请输入您的真实姓名"
-							name="input"
-							placeholder-class="text-placeholder"
-							confirm-type="next"
-						/>
-					</view>
-					<view class="cu-form-group">
-						<view class="title">手机：</view>
-						<input
-							v-model="archivesInfo.phone"
-							placeholder="请输入您的手机号码"
-							name="input"
-							type="number"
-							placeholder-class="text-placeholder"
-							confirm-type="next"
-						/>
-					</view>
-					<view class="cu-form-group">
-						<view class="title">生日：</view>
-						<picker :value="birth" mode="date" @change="handleBirthChange">
-							<view class="picker">
-								<text v-if="birth">{{ birth }}</text>
-								<view class="text-placeholder" v-else>请输入您的身高</view>
-							</view>
-						</picker>
-					</view>
-					<view class="cu-form-group">
-						<view class="title">性别：</view>
-						<picker :value="sex" :range="['男', '女']" @change="handleSexChange">
-							<view class="picker">
-								<text v-if="sex != null">{{ sex ? '女' : '男' }}</text>
-								<view class="text-placeholder" v-else>请选择您的性别</view>
-							</view>
-						</picker>
-					</view>
-					<view class="cu-form-group">
-						<view class="title">身高：</view>
-						<input
-							v-model="archivesInfo.height"
-							placeholder="请输入您的身高"
-							name="input"
-							type="number"
-							placeholder-class="text-placeholder"
-							confirm-type="next"
-						/>
-						<text>CM</text>
-					</view>
-					<view class="cu-form-group">
-						<view class="title">体重：</view>
-						<input
-							v-model="archivesInfo.weight"
-							placeholder="请输入您的体重"
-							type="number"
-							name="input"
-							placeholder-class="text-placeholder"
-							confirm-type="done"
-						/>
-						<text>KG</text>
-					</view>
-				</form>
-			</view>
-			<view class="submit-btn">
-				<button
-					class="cu-btn round lg bg-primary"
-					type="submit"
-					@click="handleSubmit"
-				>{{ hasInfo ? '修改' : '提交' }}</button>
-			</view>
-		</view>
-	</view>
+  <view class="container">
+    <cu-custom :isBack="true">
+      <block slot="backText">返回</block>
+      <block slot="content">健康档案</block>
+    </cu-custom>
+    <view class="archives">
+      <view class="cu-avatar round lg">
+        <open-data type="userAvatarUrl" />
+      </view>
+      <view class="archives-content">
+        <view class="archives-tips">为了给您提供更准确的健康管理服务 请务必如实填写一下资料</view>
+        <view class="archives-form">
+          <form>
+            <view class="cu-form-group">
+              <view class="title">姓名：</view>
+              <input
+                v-model="archivesInfo.name"
+                placeholder="请输入您的真实姓名"
+                name="input"
+                placeholder-class="text-placeholder"
+                confirm-type="next"
+              />
+            </view>
+            <view class="cu-form-group">
+              <view class="title">手机：</view>
+              <input
+                v-model="archivesInfo.phone"
+                placeholder="请输入您的手机号码"
+                name="input"
+                type="number"
+                placeholder-class="text-placeholder"
+                confirm-type="next"
+              />
+            </view>
+            <view class="cu-form-group">
+              <view class="title">生日：</view>
+              <picker :value="birth" mode="date" @change="handleBirthChange">
+                <view class="picker">
+                  <text v-if="birth">{{ birth }}</text>
+                  <view class="text-placeholder" v-else>请输入您的身高</view>
+                </view>
+              </picker>
+            </view>
+            <view class="cu-form-group">
+              <view class="title">性别：</view>
+              <picker :value="sex" :range="['男', '女']" @change="handleSexChange">
+                <view class="picker">
+                  <text v-if="sex != null">{{ sex ? '女' : '男' }}</text>
+                  <view class="text-placeholder" v-else>请选择您的性别</view>
+                </view>
+              </picker>
+            </view>
+            <view class="cu-form-group">
+              <view class="title">身高：</view>
+              <input
+                v-model="archivesInfo.height"
+                placeholder="请输入您的身高"
+                name="input"
+                type="number"
+                placeholder-class="text-placeholder"
+                confirm-type="next"
+              />
+              <text>CM</text>
+            </view>
+            <view class="cu-form-group">
+              <view class="title">体重：</view>
+              <input
+                v-model="archivesInfo.weight"
+                placeholder="请输入您的体重"
+                type="number"
+                name="input"
+                placeholder-class="text-placeholder"
+                confirm-type="done"
+              />
+              <text>KG</text>
+            </view>
+          </form>
+        </view>
+        <view class="submit-btn">
+          <button
+            class="cu-btn round lg bg-primary"
+            type="submit"
+            @click="handleSubmit"
+          >{{ hasInfo ? '修改' : '提交' }}</button>
+        </view>
+      </view>
+    </view>
+  </view>
 </template>
 
 <script>
-	import schema from 'async-validator'
+	// import schema from 'async-validator'
 	export default {
 		name: 'Archives',
 		data() {
@@ -127,14 +133,14 @@
 			},
 			handleSubmit() {
 				const { name, phone, birth, sex, height, weight } = this.archivesInfo
-				this.valdateForm({
-					name,
-					phone,
-					birth,
-					sex,
-					height,
-					weight
-				})
+				// this.valdateForm({
+				// 	name,
+				// 	phone,
+				// 	birth,
+				// 	sex,
+				// 	height,
+				// 	weight
+				// })
 					.then(res => {
 						uni.showToast({
 							title: '表单提交成功',
@@ -165,9 +171,12 @@
 </script>
 
 <style lang="scss" scoped>
+  .container{
+    min-height: 100vh;
+    background: #fff;
+  }
 	.archives {
-		min-height: 100vh;
-		background: #fff;
+		
 		padding-top: 40rpx;
 
 		.cu-avatar {

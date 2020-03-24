@@ -2,7 +2,7 @@
 	<view class="pannel pannel-shadow">
 		<view class="cu-list menu">
 			<view class="cu-item arrow" v-for="(item, index) in btnList" :key="index">
-				<navigator class="content" hover-class="none" :url="item.path" open-type="redirect">
+				<navigator class="content" hover-class="none" :url="index!==0?item.path:token?item.path:loginPath">
 					<image class="pannel-icon" :src="'../../../static/icons/' + item.icon + '.png'" />
 					<text>{{ item.label }}</text>
 				</navigator>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+	 import { mapGetters} from 'vuex'
 	export default {
 		name: 'PersonBtnPannel',
 		data() {
@@ -32,8 +33,12 @@
 						icon: 'my-contact',
 						label: '联系我们'
 					}
-				]
+				],
+				loginPath:'/pages/login/login'
 			}
+		},
+		computed:{
+		  ...mapGetters(['token'])
 		}
 	}
 </script>

@@ -1,5 +1,9 @@
 <template>
 	<view class="message-detail cu-chat">
+    <cu-custom :isBack="true">
+      <block slot="backText">返回</block>
+      <block slot="content">消息通知</block>
+    </cu-custom>
 		<view class="cu-item">
 			<image
 				class="cu-avatar round"

@@ -1,104 +1,107 @@
 <template>
-	<view class="recruit">
-		<view class="list">
-			<view class="item" v-for="(item,index) in list" :key="index" @click="handelRec(item.id)">
-				<image class="my-bg" src="../../static/images/home_li.png" mode=""></image>
-				<image class="my-ri" src="../../static/images/home_ri.png" mode=""></image>
-				<view class="content">
-					<view class="title">
-					{{item.title}}
-						<view class="date">
-							<image src="../../static/icons/recruit_time.png" mode=""></image>
-							{{item.startdate}}～{{item.enddate}}
-							<view class="status0" v-if="item.status==0">
-								报名中
-							</view>
-							<view class="status0 status1" v-if="item.status==1">
-								报名结束
-							</view>
-						</view>
-					</view>
-					<view class="info">
-						<view class="info_item">
-							<view class="ta">
-								年龄
-							</view>
-							<view class="td">
-								{{item.age}}岁
-							</view>
-						</view>
-						<view class="info_item">
-							<view class="ta">
-								性别
-							</view>
-							<view class="td">
-								{{item.gender}}
-							</view>
-						</view>
-						<view class="info_item">
-							<view class="ta">
-								其他
-							</view>
-							<view class="td">
-								{{item.other}}
-							</view>
-						</view>
-					</view>
-				</view>
-			</view>
-		</view>
-	</view>
+  <view class="container">
+    <cu-custom bgColor="bg-default">
+      <block slot="content">征募报名</block>
+    </cu-custom>
+  
+    <view class="recruit">
+      <view class="list">
+        <view class="item" v-for="(item,index) in list" :key="index" @click="handelRec(item.id)">
+          <image class="my-bg" src="../../static/images/home_li.png" mode=""></image>
+          <image class="my-ri" src="../../static/images/home_ri.png" mode=""></image>
+          <view class="content">
+            <view class="title">
+              <view class="text">
+                {{item.title}}
+              </view>
+            
+              <view class="date">
+                <image src="../../static/icons/recruit_time.png" mode=""></image>
+                {{item.start}}～{{item.end}}
+                <view class="status0" v-if="item.status==1">
+                  报名中
+                </view>
+                <view class="status0 status1" v-if="item.status==0">
+                  报名结束
+                </view>
+              </view>
+            </view>
+            <view class="info">
+              <view class="info_item">
+                <view class="ta">
+                  年龄
+                </view>
+                <view class="td">
+                  {{item.age}}岁
+                </view>
+              </view>
+              <view class="info_item">
+                <view class="ta">
+                  性别
+                </view>
+                <view class="td">
+                  {{item.sex}}
+                </view>
+              </view>
+              <view class="info_item">
+                <view class="ta">
+                  其他
+                </view>
+                <view class="td">
+                  {{item.type}}
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </template>
 
 <script>
+  import {getRecruitList} from '../../apis/index.js'
 	export default {
 		data() {
 			return {
-					list:[]
+					list:[],
+          page:1,
+          size:10
 				
 			}
 		},
 		onReachBottom(){
 			var that=this
-			console.log("ppp")
 			uni.showLoading({
 				icon:'none'
 			})
 			setTimeout(function(){
-				for(var i=0;i<10;i++){
-					that.list.push(
-					{
-						id:i,
-						title:'「临床招募」琥珀酸曲格叻玎片（空腹）志愿者',
-						startdate:'2019.9.11',
-						enddate:'2019.9.22',
-						age:'18-40',
-						gender:'男性',
-						other:'无',
-						status:0
-					})
-				}
-				uni.hideLoading()
+        this.page++
+				this.initData()
+				
 			},1000)
 		},
-		onLoad() {
+		mounted() {
 			
-			for(var i=0;i<10;i++){
-				this.list.push(
-				{
-					id:i,
-					title:'「临床招募」琥珀酸曲格叻玎片（空腹）志愿者',
-					startdate:'2019.9.11',
-					enddate:'2019.9.22',
-					age:'18-40',
-					gender:'男性',
-					other:'无',
-					status:0
-				})
-			}
-			console.log(this.list)
+			this.initData()
 		},
 		methods: {
+      initData(){
+        let page=this.page;
+        let size=this.size;
+        getRecruitList({page,size}).then((res)=>{
+          console.log(res)
+          let data=res.data.data
+          if(page>1){
+            data.forEach((val)=>{
+               this.list.push(val)
+            })
+          }else{
+            this.list=data
+          }
+          uni.hideLoading()
+        })
+      },
 			handelRec(id){
 				uni.navigateTo({
 					url:"/pages/recruit/rec_detail?id="+id
@@ -109,6 +112,10 @@
 </script>
 
 <style scoped lang="scss">
+  .container{
+    min-height: 100vh;
+    
+  }
 .recruit{
 	// background-color: #fff;
 	padding: 0 30rpx;
@@ -144,9 +151,16 @@
 				padding-left: 32rpx;
 				.title{
 					width:626rpx;
-					font-size:30rpx;
-					line-height:40rpx;
 					
+					.text{
+            font-size:30rpx;
+            line-height:40rpx;
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+          }
 					.date{
 						margin-top: 10rpx;
 						display: flex;
