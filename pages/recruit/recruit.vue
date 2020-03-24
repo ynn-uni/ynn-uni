@@ -1,56 +1,62 @@
 <template>
-	<view class="recruit">
-		<view class="list">
-			<view class="item" v-for="(item,index) in list" :key="index" @click="handelRec(item.id)">
-				<image class="my-bg" src="../../static/images/home_li.png" mode=""></image>
-				<image class="my-ri" src="../../static/images/home_ri.png" mode=""></image>
-				<view class="content">
-					<view class="title">
-            <view class="text">
-              {{item.title}}
+  <view class="container">
+    <cu-custom bgColor="bg-default">
+      <block slot="content">征募报名</block>
+    </cu-custom>
+  
+    <view class="recruit">
+      <view class="list">
+        <view class="item" v-for="(item,index) in list" :key="index" @click="handelRec(item.id)">
+          <image class="my-bg" src="../../static/images/home_li.png" mode=""></image>
+          <image class="my-ri" src="../../static/images/home_ri.png" mode=""></image>
+          <view class="content">
+            <view class="title">
+              <view class="text">
+                {{item.title}}
+              </view>
+            
+              <view class="date">
+                <image src="../../static/icons/recruit_time.png" mode=""></image>
+                {{item.start}}～{{item.end}}
+                <view class="status0" v-if="item.status==1">
+                  报名中
+                </view>
+                <view class="status0 status1" v-if="item.status==0">
+                  报名结束
+                </view>
+              </view>
             </view>
-					
-						<view class="date">
-							<image src="../../static/icons/recruit_time.png" mode=""></image>
-							{{item.start}}～{{item.end}}
-							<view class="status0" v-if="item.status==1">
-								报名中
-							</view>
-							<view class="status0 status1" v-if="item.status==0">
-								报名结束
-							</view>
-						</view>
-					</view>
-					<view class="info">
-						<view class="info_item">
-							<view class="ta">
-								年龄
-							</view>
-							<view class="td">
-								{{item.age}}岁
-							</view>
-						</view>
-						<view class="info_item">
-							<view class="ta">
-								性别
-							</view>
-							<view class="td">
-								{{item.sex}}
-							</view>
-						</view>
-						<view class="info_item">
-							<view class="ta">
-								其他
-							</view>
-							<view class="td">
-								{{item.type}}
-							</view>
-						</view>
-					</view>
-				</view>
-			</view>
-		</view>
-	</view>
+            <view class="info">
+              <view class="info_item">
+                <view class="ta">
+                  年龄
+                </view>
+                <view class="td">
+                  {{item.age}}岁
+                </view>
+              </view>
+              <view class="info_item">
+                <view class="ta">
+                  性别
+                </view>
+                <view class="td">
+                  {{item.sex}}
+                </view>
+              </view>
+              <view class="info_item">
+                <view class="ta">
+                  其他
+                </view>
+                <view class="td">
+                  {{item.type}}
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </template>
 
 <script>
@@ -106,6 +112,10 @@
 </script>
 
 <style scoped lang="scss">
+  .container{
+    min-height: 100vh;
+    
+  }
 .recruit{
 	// background-color: #fff;
 	padding: 0 30rpx;

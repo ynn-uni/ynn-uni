@@ -1,5 +1,8 @@
 <template>
 	<view class="home">
+    <cu-custom bgColor="bg-white">
+      <block slot="content">肿瘤医院</block>
+    </cu-custom>
      <button open-type="openSetting" bindopensetting="callback">打开设置页</button>
 		<!-- <Meaasge></Meaasge> -->
 		<Swiper></Swiper>

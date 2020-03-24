@@ -1,5 +1,12 @@
 <template>
+  <view class="container">
+    <cu-custom :isBack="true" bgColor="bg-white">
+      <block slot="backText">返回</block>
+      <block slot="content">幕征报名</block>
+    </cu-custom>
+  
 	<view class="rec-review">
+   
 		<image v-if="status==0" src="../../static/icons/review.png" mode=""></image>
 		<image v-if="status==1" src="../../static/icons/check-circle.png" mode=""></image>
 		<image v-if="status==2" src="../../static/icons/close.png" mode=""></image>
@@ -20,6 +27,7 @@
 		</view>
 		<button @click="back">返回</button>
 	</view>
+ </view>
 </template>
 
 <script>
@@ -44,18 +52,16 @@
 </script>
 
 <style scoped lang="scss">
+  .container{
+    min-height: 100vh;
+    background-color: #fff;
+  }
 	.rec-review{
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		position: fixed;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		left: 0;
 		font-size:32rpx;
 		color:rgba(74,74,74,1);
-		background-color: #fff;
 		image{
 			width: 172rpx;
 			height: 172rpx;

@@ -1,65 +1,12 @@
 <template>
+  <view class="container">
+    <cu-custom :isBack="true" class="text-white">
+      <block slot="backText">返回</block>
+      <block slot="content">申情免费用药</block>
+    </cu-custom>
+ 
 	<view class="application">
-		<!-- <form @submit="formSubmit" @reset="formReset">
-			<view class="form">
-				<view class="title">
-					请认真填写下列内容
-					<text>（信息内容我们会为你保密）</text>
-				</view>
-				<view class="formgroup">
-					<view class="">
-						1.患者的姓名：
-					</view>
-					<input placeholder="请输入患者的姓名" name="truename" type="text"></input>
-				</view>
-				<view class="formgroup">
-					<view class="">
-						2.患者的电话：
-					</view>
-					<input placeholder="请输入患者的电话" name="mobile" type="number"></input>
-				</view>
-				<view class="formgroup">
-					<view class="">
-						3.患者的出生日期：
-					</view>
-          <picker name="birthday" mode="date" :value="birthday" @change="bindDateChange">
-              <view class="uni-input birthday">{{birthday?birthday:'请选择患者出生日期'}}</view>
-          </picker>
-					<input placeholder="请输入患者的出生日期" name="birthday"></input>
-				</view>
-				<view class="formgroup">
-					<view class="">
-						4.患者的性别：
-					</view>
-					<radio-group class="block" @change="RadioChange" name="sex">
-						<radio class=' radio ra' :class="radio==1?'checked':''" :checked="radio==1?true:false" :value="1"></radio>男
-						<radio class=' radio ra' :class="radio==2?'checked':''" :checked="radio==2?true:false" :value="2"></radio>女
-					</radio-group>
-				</view>
-				<view class="formgroup">
-					<view class="">
-						5.患者的疾病史：
-					</view>
-					<textarea value="" placeholder="请输入患者的疾病史" name="history"/>
-					<input placeholder="请输入患者的疾病史" name="input"></input>
-				</view>
-				
-			</view>
-			<view class="note text-center margin-top-xs">
-				注：请携带相关资料，比如病例、检测报告等资料
-			</view>
-			<view class="treaty flex justify-center align-center">
-				<label>
-					<checkbox value="cb" checked="true" color="#FFFFFF" style="transform:scale(0.7)" /><text @click.stop="treaty">我已阅读，并同意接受相关条约</text>
-				</label>
-			</view>
-			<view class="btn">
-				<button form-type="submit"> 报名</button>
-			</view>
-			<view class="cancel text-center" @click="cancal">
-				取消
-			</view>
-		</form> -->
+		
     <bjx-form
         labelType="inline"
         :rules="rules"
@@ -119,6 +66,7 @@
         </view>
     </bjx-form>
 	</view>
+  </view>
 </template>
 
 <script>
@@ -208,11 +156,14 @@
 </script>
 
 <style scoped lang="scss">
+  .container{
+    min-height: 100vh;
+    background:linear-gradient(150deg,rgba(61,223,174,1) 0%,rgba(54,174,173,1) 100%);
+  }
 	.application{
-		min-height: 100vh;
 		overflow-y:scroll ;
 		padding: 30rpx;
-		background:linear-gradient(150deg,rgba(61,223,174,1) 0%,rgba(54,174,173,1) 100%);
+		height:calc(100vh - 120rpx);
 		.form{
 			width: 690rpx;
 			// height: 200rpx;

@@ -9,40 +9,49 @@
 			</view>
 		</view>
 		<view class="person-action flex justify-around margin-top-lg">
-			<navigator class="action-button text-center" url="/pages/archives/archives" hover-class="none">
+			<navigator class="action-button text-center" :url="token?item.path:loginPath" hover-class="none" v-for="(item,index) in btnList" :key="index">
 				<view class="action-button text-center">
 					<button class="cu-btn cuIcon lg">
-						<image src="../../../static/icons/my-info.png" />
+						<image :src="'../../../static/icons/'+item.icon+'.png'" />
 					</button>
-					<view class="action-label text-sm">健康档案</view>
+					<view class="action-label text-sm">{{item.label}}</view>
 				</view>
 			</navigator>
-			<navigator class="action-button text-center" url="/pages/message/list" hover-class="none">
-				<button class="cu-btn cuIcon lg">
-					<image src="../../../static/icons/my-message.png" />
-				</button>
-				<view class="action-label text-sm">我的消息</view>
-			</navigator>
-			<navigator class="action-button text-center" url="/pages/schedule/calendar" hover-class="none">
-				<view class="action-button text-center">
-					<button class="cu-btn cuIcon lg">
-						<image src="../../../static/icons/my-todo.png" />
-					</button>
-					<view class="action-label text-sm">日程管理</view>
-				</view>
-			</navigator>
+			
 		</view>
 	</view>
 </template>
 
 <script>
+  import { mapGetters} from 'vuex'
 	export default {
 		name: 'PersonPannel',
 		data() {
 			return {
-				personRole: 'visitor'
+				personRole: 'visitor',
+        btnList: [
+        	{
+        		path: '/pages/archives/archives',
+        		icon: 'my-info',
+        		label: '健康档案'
+        	},
+        	{
+        		path: '/pages/message/list',
+        		icon: 'my-message',
+        		label: '我的消息'
+        	},
+        	{
+        		path: '/pages/schedule/calendar',
+        		icon: 'my-todo',
+        		label: '日程管理'
+        	}
+        ],
+        loginPath:'/pages/login/login'
 			}
-		}
+		},
+    computed:{
+      ...mapGetters(['token'])
+    }
 	}
 </script>
 

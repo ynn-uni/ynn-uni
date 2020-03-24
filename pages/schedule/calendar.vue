@@ -1,5 +1,9 @@
 <template>
 	<view class="schedule bg-white">
+    <cu-custom :isBack="true">
+      <block slot="backText">返回</block>
+      <block slot="content">日程管理</block>
+    </cu-custom>
 		<uni-calendar 
 		    :insert="true"
 			:showMonth="false"

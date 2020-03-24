@@ -1,5 +1,8 @@
 <template>
 	<view class="news">
+    <cu-custom bgColor="bg-white">
+      <block slot="content">新闻资讯</block>
+    </cu-custom>
 		<view class="hot" v-if="hotList.length">
 			<view class="title">
 				<view class="left">
@@ -92,7 +95,7 @@
 
 <style scoped lang="scss">
 .news{
-	
+	min-height: 100vh;
 	.hot{
 		padding: 0 30rpx;
 		background-color: #fff;

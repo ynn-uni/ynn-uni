@@ -1,34 +1,37 @@
 <template>
-	<view class="trail-detail bg-white">
-		<view class="detail-info flex">
-			<image class="detail-cover" src="../../static/images/home_new.png" />
-			<view>
-				<view class="detail-title">{{ trialDetail.project_info.title }}</view>
-				<view class="detail-time text-grey">申请时间：{{ trialDetail.created_at }}</view>
-				<view class="detail-status">{{trialDetail.status==0?'待院内查看':'已通过'}}</view>
-			</view>
-		</view>
-		<view class="detail-timeline">
-			<view class="cu-timeline">
-				<view class="cu-item" v-for="(item, index) in trialDetail.examine" :key="index">
-         <view v-if="index>0&&trialDetail.examine[index-1].status==1">
-           <view class="timeline-title text-color">{{ item.title }}</view>
-           <view class="timeline-info text-grey">{{ item.describe }}</view>
-           <view class="timeline-status" :class="classNameList[item.status]">
-           「{{ item.status | statusFilter}}」
-           </view>
-         </view>
-         <view v-else-if="index==0">
-           <view class="timeline-title text-color">{{ item.title }}</view>
-           <view class="timeline-info text-grey">{{ item.describe }}</view>
-           <view class="timeline-status" :class="classNameList[item.status]">
-           「{{ item.status | statusFilter}}」
-           </view>
-         </view>
+  <view class="container bg-white">
+    <cu-custom :isBack="true">
+    	<block slot="backText">返回</block>
+    	<block slot="content">申请详情</block>
+    </cu-custom>
+    <view class="trail-detail">
+      <view class="detail-info flex">
+        <image class="detail-cover" src="../../static/images/home_new.png" />
+        <view>
+          <view class="detail-title">{{ trialDetail.project_info.title }}</view>
+          <view class="detail-time text-grey">申请时间：{{ trialDetail.created_at }}</view>
+          <view class="detail-status">{{trialDetail.status==0?'待院内查看':'已通过'}}</view>
         </view>
-			</view>
-		</view>
-	</view>
+      </view>
+      <view class="detail-timeline">
+        <view class="cu-timeline">
+          <view class="cu-item" v-for="(item, index) in trialDetail.examine" :key="index">
+           <view >
+             <view class="timeline-title text-color">{{ item.title }}</view>
+             <view class="timeline-info text-grey">{{ item.describe }}</view>
+             <view class="timeline-status" :class="classNameList[item.status]" v-if="index>0&&trialDetail.examine[index-1].status==1">
+             「{{ item.status | statusFilter}}」
+             </view>
+             <view class="timeline-status" :class="classNameList[item.status]" v-else-if="index==0">
+             「{{ item.status | statusFilter}}」
+             </view>
+           </view>
+           
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </template>
 
 <script>
@@ -77,8 +80,11 @@
 </script>
 
 <style lang="scss" scoped>
+  .container{
+    min-height: 100vh;
+  }
 	.trail-detail {
-		min-height: 100vh;
+		
 		padding: 30rpx;
 
 		.detail-cover {

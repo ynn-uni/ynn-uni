@@ -1,6 +1,10 @@
 <template>
 	<view class="apply bg-white">
-		<status-pannel :status-map="statusMap" @change="handleStatusChange" />
+    <cu-custom :isBack="true">
+    	<block slot="backText">返回</block>
+    	<block slot="content">试验申请</block>
+    </cu-custom>
+		<status-pannel :status-map="statusMap" @change="handleStatusChange" :activestatus="activeStatus"/>
 		<view class="apply-list cu-list menu">
 			<navigator
 				class="cu-item"

@@ -10,10 +10,10 @@
 			</view>
 			
 		</view>
-		<view class="rec_go">
+		<view class="rec_go" @click="handelRecDetail(firstData.id)">
 			<image class="rec_img" src="../../../static/images/home_recgo.jpg" mode=""></image>
 			<view class="box">
-				琥珀酸曲格勒汀片志愿者
+				{{firstData.title}}
 			</view>
 		</view>
 		
@@ -40,7 +40,8 @@
 	export default {
 		data() {
 			return {
-				list:[]
+				list:[],
+				firstData:{}
 			};
 		},
 		mounted() {
@@ -50,6 +51,7 @@
       initData(){
         getRecruitList().then((res)=>{
           this.list=res.data.data
+          this.firstData=res.data.data[0]
         })
       },
 			handelRecDetail(id){
@@ -113,7 +115,7 @@
 				top: 46rpx;
 				left: 180rpx;
 				color: #fff;
-				font-size: 44rpx;
+				font-size: 40rpx;
 				font-style: italic;
 				overflow : hidden;
 				text-overflow: ellipsis;

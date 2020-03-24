@@ -1,5 +1,9 @@
 <template>
 	<view class="rec_detail">
+    <cu-custom :isBack="true" bgColor="bg-white">
+      <block slot="backText">返回</block>
+      <block slot="content">征募详情</block>
+    </cu-custom>
 		<view class="title">
 			{{data.title}}
 		</view>

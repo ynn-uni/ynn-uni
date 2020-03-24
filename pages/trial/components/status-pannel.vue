@@ -7,7 +7,7 @@
 			@click="handleClick(item.status)"
 		>
 			<image :src="`../../../static/icons/${ item.icon }.png`" />
-			<text class="text-white">{{ item.label }}</text>
+			<text :class="item.status==activestatus?'text-orange':'text-white'">{{ item.label }}</text>
 		</view>
 	</view>
 </template>
@@ -20,7 +20,11 @@
 				type: Array,
 				required: true,
 				default: () => []
-			}
+			},
+      activestatus:{
+        type:String,
+        default:-1
+      }
 		},
 		methods: {
 			handleClick(status) {

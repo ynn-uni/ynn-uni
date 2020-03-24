@@ -1,5 +1,12 @@
 <template>
-	<view class="login" >
+  <view class="container">
+    <cu-custom :isBack="true" bgColor="bg-white">
+      <block slot="backText">返回</block>
+      <block slot="content">药牛牛</block>
+    </cu-custom>
+ 
+    <view class="login" >
+    
 		<view class="content">
 			<image src="../../static/images/login_logo.gif" mode=""></image>
 			<text>重庆市肿瘤医院I期临床试验中心</text>
@@ -7,6 +14,7 @@
 			<!-- <button v-if="!a" class="animation-slide-right" data-class="slide-right" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">电话号授权</button> -->
 		</view>
 	</view>
+  </view>
 </template>
 
 <script>
@@ -58,12 +66,15 @@
 </script>
 
 <style scoped lang="scss">
+  .container{
+    background-color: #fff;
+    min-height: 100vh;
+  }
 .login{
-	background-color: #fff;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 100vh;
+  height:calc(100vh - 200rpx);
 	.content{
 		display: flex;
 		justify-content: center;

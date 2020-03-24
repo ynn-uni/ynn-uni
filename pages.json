@@ -3,7 +3,7 @@
     {
       "path": "pages/my/my",
       "style": {
-        "navigationBarTitleText": "我的"
+        "navigationBarTextStyle":"white"
       }
     },
     {
@@ -21,7 +21,8 @@
     {
       "path": "pages/recruit/application",
       "style": {
-        "navigationBarTitleText": "申请免费用药"
+        "navigationBarTitleText": "申请免费用药",
+        "navigationBarTextStyle":"white"
       }
     },
     {
@@ -114,7 +115,8 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "肿瘤医院",
     "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle":"custom"
   },
   "tabBar": {
     "color": "#4A4A4A",
