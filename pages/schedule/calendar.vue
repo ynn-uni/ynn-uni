@@ -1,6 +1,6 @@
 <template>
 	<view class="schedule bg-white">
-    <cu-custom :isBack="true">
+    <cu-custom :isBack="true" bgColor="bg-white">
       <block slot="backText">返回</block>
       <block slot="content">日程管理</block>
     </cu-custom>
@@ -38,29 +38,25 @@
 		data() {
 			return {
 				selectedList: [{
-					date: '2020-02-10',
+					date: '2020-03-10',
 					info: '已上传',
-					
 				}],
-				selectedDay: new Date.toISOString().split('T')[0],
+				selectedDay: (new Date()).toISOString().split('T')[0],
 				scheduleList: []
 			}
 		},
 		computed: {
 			formatSelectedDate() {
-				// const [year, month, day] = this.selectedDay.split('-')
-				// return `${year}年${month}月${day}日`
+				const [year, month, day] = this.selectedDay.split('-')
+				return `${year}年${month}月${day}日`
 			}
 		},
 		mounted() {
-			this.getSchedule()
-			console.log(new Date.toISOString())
+			this.scheduleList=this.getSchedule()
 		},
 		methods: {
 			handleChange(evt) {
-				console.log(evt)
-				this.selectedDay = evt.fullDate
-				this.getSchedule()
+				this.selectedDay = evt.fulldate
 			},
 			getSchedule(date) {
 				return [{

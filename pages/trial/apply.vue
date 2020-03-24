@@ -44,9 +44,14 @@
 				statusMap: [
 					{
 						icon: 'apply-pending',
-						label: '待审核',
-						status: 0
+						label: '全部',
+						status: -1
 					},
+          {
+          	icon: 'apply-pending',
+          	label: '待审核',
+          	status: 0
+          },
 					{
 						icon: 'apply-refuse',
 						label: '已通过',
@@ -88,11 +93,11 @@
 			},
 			handleStatusChange(evt) {
 				const curStatus = this.activeStatus
-				if (curStatus === evt) {
-					this.activeStatus = -1
-				} else {
+				// if (curStatus === evt) {
+				// 	this.activeStatus = -1
+				// } else {
 					this.activeStatus = evt
-				}
+				// }
         this.getApplyList()
 			}
 		}

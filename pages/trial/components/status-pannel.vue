@@ -37,8 +37,8 @@
 <style lang="scss" scoped>
 	.status-pannel {
 		background: #3bcdae;
-		margin-left: 30rpx;
-		margin-right: 30rpx;
+		margin-left: 10rpx;
+		margin-right: 10rpx;
 		margin-bottom: 20rpx;
 		padding: 24rpx 60rpx;
 		box-shadow: 0px 4px 6px 0px #d8fff7;
