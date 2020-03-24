@@ -295,7 +295,7 @@
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
-		height: 50px;
+		height: 40px; // 50px custom
 		border-bottom-color: $uni-border-color;
 		border-bottom-style: solid;
 		border-bottom-width: 1px;
@@ -320,7 +320,7 @@
 	.uni-calendar__backtoday {
 		position: absolute;
 		right: 0;
-		top: 25rpx;
+		top: 15rpx; // 25rpx // custom
 		padding: 0 5px;
 		padding-left: 10px;
 		height: 25px;
@@ -391,7 +391,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		height: 45px;
+		height: 40px; // 45px custom
 		border-bottom-color: #F5F5F5;
 		border-bottom-style: solid;
 		border-bottom-width: 1px;
