@@ -13,20 +13,23 @@
 			<scheduleList :date="selectedDay" />
 		</view>
 		<view class="schedule-add">
-			<button class="cu-btn margin-tb-sm cuIcon lg">
-				<text class="cuIcon-add"></text>
+			<button class="cu-btn margin-tb-sm cuIcon lg" @click="handleAdd">
+				<text class="cuIcon-add" />
 			</button>
 		</view>
+		<SchedulePopup ref="schedulePopup" />
 	</view>
 </template>
 
 <script>
 	import uniCalendar from '@/components/uni-calendar/uni-calendar.vue'
-	import scheduleList from './components/scheduleList'
+	import ScheduleList from './components/ScheduleList'
+	import SchedulePopup from './components/SchedulePopup'
 	export default {
 		components: {
 			uniCalendar,
-			scheduleList
+			ScheduleList,
+			SchedulePopup
 		},
 		data() {
 			return {
@@ -51,6 +54,7 @@
 		},
 		mounted() {
 			this.init()
+			this.handleAdd()
 		},
 		methods: {
 			init() {
@@ -60,6 +64,9 @@
 			handleChange(evt) {
 				console.log(evt)
 				this.selectedDay = evt.fullDate
+			},
+			handleAdd() {
+				this.$refs.schedulePopup.open()
 			}
 		}
 	}
