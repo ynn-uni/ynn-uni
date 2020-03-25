@@ -8,7 +8,7 @@
 		<view class="apply-list cu-list menu">
 			<navigator
 				class="cu-item"
-				v-for="(item, index) in filterList"
+				v-for="(item, index) in list"
 				:key="index"
 				:url="`/pages/trial/detail?id=${item.id}`"
 			>
@@ -66,17 +66,9 @@
 				list: []
 			}
 		},
-		computed: {
-			filterList() {
-				const status = this.activeStatus
-				if (status != -1) {
-					return this.list.filter(item => item.status === status)
-				}
-				return this.list
-			}
-		},
+		
 		mounted() {
-			// this.getApplyList()
+			this.getApplyList()
 		},
 		methods: {
 			getApplyList() {
@@ -93,11 +85,7 @@
 			},
 			handleStatusChange(evt) {
 				const curStatus = this.activeStatus
-				// if (curStatus === evt) {
-				// 	this.activeStatus = -1
-				// } else {
 					this.activeStatus = evt
-				// }
         this.getApplyList()
 			}
 		}
