@@ -58,9 +58,6 @@
 				</view>
 				
 			</button>
-			<!-- <button class="cu-btn phone">
-				免费用药
-			</button> -->
 			
 		</view>
 		<view class="cu-modal" :class="modalName=='Image'?'show':''">

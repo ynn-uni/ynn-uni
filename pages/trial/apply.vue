@@ -43,7 +43,7 @@
         size:50,
 				statusMap: [
 					{
-						icon: 'apply-pending',
+						icon: 'project-all',
 						label: '全部',
 						status: -1
 					},
@@ -76,7 +76,7 @@
 			}
 		},
 		mounted() {
-			this.getApplyList()
+			// this.getApplyList()
 		},
 		methods: {
 			getApplyList() {
