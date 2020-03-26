@@ -26,3 +26,6 @@ export const getEnrollList = (data = {}) => {
 export const getEnrollDetails = (data = {}) => {
   return postAction(`/Apis/Enroll/getEnrollDetails`, data)
 }
+export const getHealthRecords = (data = {}) => {
+  return postAction(`/Apis/Trial/getTrialDetailsInMonth`, data)
+}
