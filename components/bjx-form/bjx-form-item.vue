@@ -139,6 +139,7 @@
 				if(!this.theForm.rules) return
 				let rule = this.theForm.rules[this.prop]
 				this.msg = ''
+        
 				if(rule) {
 					if(rule.required && (this.value == null || this.value == '')) {
 						// 是否必填
@@ -146,6 +147,7 @@
 					}else if(rule.validator) {
 						// 自定义规则校验函数
 						let bol = rule.validator(this.value,rule)
+						
 						if(typeof bol == 'string') {
 							this.msg = bol
 						}else if(!bol) {
@@ -156,9 +158,10 @@
 						let result = fromCheck(this.value, rule.rule, this.theForm.form)
 						if(result !== true) {
 							this.msg = this.label + result.msg
+             
 							if(rule.message) {
 								if(typeof rule.message === 'string') {
-									this.msg = typeof rule.message
+									this.msg = rule.message
 								} else if(rule.message[result.rule]) {
 									this.msg = rule.message[result.rule]
 								}

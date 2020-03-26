@@ -11,73 +11,6 @@
       <view class="archives-content">
         <view class="archives-tips">为了给您提供更准确的健康管理服务 请务必如实填写一下资料</view>
         <view class="archives-form">
-        <!--  <form>
-            <view class="cu-form-group">
-              <view class="title">姓名：</view>
-              <input
-                v-model="archivesInfo.name"
-                placeholder="请输入您的真实姓名"
-                name="input"
-                placeholder-class="text-placeholder"
-                confirm-type="next"
-              />
-            </view>
-            <view class="cu-form-group">
-              <view class="title">手机：</view>
-              <input
-                v-model="archivesInfo.phone"
-                placeholder="请输入您的手机号码"
-                name="input"
-                type="number"
-                placeholder-class="text-placeholder"
-                confirm-type="next"
-              />
-            </view>
-            <view class="cu-form-group">
-              <view class="title">生日：</view>
-              <picker :value="birth" mode="date" @change="handleBirthChange">
-                <view class="picker">
-                  <text v-if="birth">{{ birth }}</text>
-                  <view class="text-placeholder" v-else>请输入您的身高</view>
-                </view>
-              </picker>
-            </view>
-            <view class="cu-form-group">
-              <view class="title">性别：</view>
-              <picker :value="sex" :range="['男', '女']" @change="handleSexChange">
-                <view class="picker">
-                  <text v-if="sex != null">{{ sex ? '女' : '男' }}</text>
-                  <view class="text-placeholder" v-else>请选择您的性别</view>
-                </view>
-              </picker>
-            </view>
-            <view class="cu-form-group">
-              <view class="title">身高：</view>
-              <input
-                v-model="archivesInfo.height"
-                placeholder="请输入您的身高"
-                name="input"
-                type="number"
-                placeholder-class="text-placeholder"
-                confirm-type="next"
-              />
-              <text>CM</text>
-            </view>
-            <view class="cu-form-group">
-              <view class="title">体重：</view>
-              <input
-                v-model="archivesInfo.weight"
-                placeholder="请输入您的体重"
-                type="number"
-                name="input"
-                placeholder-class="text-placeholder"
-                confirm-type="done"
-              />
-              <text>KG</text>
-            </view>
-          </form> -->
-        
-        
           <bjx-form
               labelType="inline"
               :rules="rules"
@@ -148,6 +81,7 @@
 			return {
 				archivesInfo: {},
 				hasInfo: true,
+        reg:/^1[3456789]\d{9}$/,
         form: {
             project:'',
             truename: '',
@@ -159,7 +93,8 @@
         },
         rules: {
             truename: {required: true,msg:'请输入您的真实姓名'},
-            phone: {required: true,msg:'请输入您的电话号'},
+            //使用正则的时候注意字符的转译
+            phone: {required: true,rule:['reg:^1[3456789]\\d{9}$'],msg:'请输入您的手机号',message:'请输入正确的手机号'},
             birthday:{required: true,msg:'请选择您的出生日期'},
             sex:{required: true,msg:'请选择您的性别'},
             height:{required: true,msg:'请输入您的身高'},

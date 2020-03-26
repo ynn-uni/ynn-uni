@@ -90,7 +90,7 @@
         },
         rules: {
             truename: {required: true,msg:'请输入患者姓名'},
-            mobile: {required: true,msg:'请输入患者电话号'},
+            mobile: {required: true,rule:['reg:^1[3456789]\\d{9}$'],msg:'请输入患者手机号',message:'请输入正确的手机号'},
             birthday:{required: true,msg:'请选择患者出生日期'},
             sex:{required: true,msg:'请选择患者性别'},
             history:{required: true,msg:'请输入患者疾病史'}

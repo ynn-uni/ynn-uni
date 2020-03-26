@@ -107,9 +107,11 @@ export const fromCheck = function(val, rule,form) {
 	// ['type: string','length:5','in:1,3'，'between:0,5'] // 数组、字符串混合
 	// ['string',['length',5],['in',[1,3],['between', [0,5]]]] 最终形式
 	rule = getArr(rule,'|')
+  
 	const len = rule.length;
 	for (let i = 0; i < len; ++i ) {
 		let key = '',param = ''
+    //作者原有逻辑
 		if(rule[i].indexOf('reg') == 0){
 			// 正则
 			key = 'reg'
