@@ -94,7 +94,7 @@
 		button{
 			margin-top: 50rpx;
 			background-color: #3ACF71;
-			color: #333333;
+			color: #fff;
 		}
 	}
 }

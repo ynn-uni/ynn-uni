@@ -27,6 +27,9 @@ export const getEnrollDetails = (data = {}) => {
   return postAction(`/Apis/Enroll/getEnrollDetails`, data)
 }
 //健康档案  
+export const getHealthRecords = (data = {}) => {
+  return postAction(`/Apis/Trial/getTrialDetailsInMonth`, data)
+}
 //传入参数{truename,phone,birthday,sex,height,weight}
 export const setUserInfo = (data = {}) => {
   return postAction(`/Apis/Member/setUserInfo`, data)
