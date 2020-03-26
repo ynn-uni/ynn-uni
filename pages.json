@@ -3,7 +3,7 @@
     {
       "path": "pages/my/my",
       "style": {
-        "navigationBarTextStyle":"white"
+        "navigationBarTextStyle": "white"
       }
     },
     {
@@ -12,17 +12,17 @@
         "navigationBarTitleText": "药牛牛"
       }
     },
-   {
-     "path": "pages/login/login",
-     "style": {
-       "navigationBarTitleText": "药牛牛"
-     }
-   },
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "药牛牛"
+      }
+    },
     {
       "path": "pages/recruit/application",
       "style": {
         "navigationBarTitleText": "申请免费用药",
-        "navigationBarTextStyle":"white"
+        "navigationBarTextStyle": "white"
       }
     },
     {
@@ -61,7 +61,7 @@
         "navigationBarTitleText": "新闻详情"
       }
     },
-    
+
     {
       "path": "pages/archives/archives",
       "style": {
@@ -109,6 +109,12 @@
       "style": {
         "navigationBarTitleText": "日程管理"
       }
+    },
+    {
+      "path": "pages/records/records",
+      "style": {
+        "navigationBarTitleText": "健康记录"
+      }
     }
   ],
   "globalStyle": {
@@ -116,7 +122,7 @@
     "navigationBarTitleText": "肿瘤医院",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8",
-    "navigationStyle":"custom"
+    "navigationStyle": "custom"
   },
   "tabBar": {
     "color": "#4A4A4A",
