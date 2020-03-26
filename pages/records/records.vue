@@ -1,9 +1,5 @@
 <template>
-  <view class="records bg-white">
-    <cu-custom :isBack="true" bgcolor="bg-white">
-      <block slot="backText">返回</block>
-      <block slot="content">健康记录</block>
-    </cu-custom>
+  <view class="container records">
     <uni-calendar
       :insert="true"
       :showMonth="false"
@@ -111,8 +107,6 @@
 
 <style lang="scss" scoped>
   .records {
-    min-height: 100vh;
-
     .records-tip {
       padding: 10rpx 0;
       padding-left: 10rpx;

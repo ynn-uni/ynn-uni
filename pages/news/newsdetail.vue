@@ -1,10 +1,5 @@
 <template>
-  <view class="container">
-    <cu-custom :isBack="true" bgColor="bg-white">
-      <block slot="backText">返回</block>
-      <block slot="content">新闻详情</block>
-    </cu-custom>
-  
+  <view class="container">  
     <view class="rec_detail">
       <view class="title">
         {{data.title}}
@@ -114,13 +109,8 @@
 </script>
 
 <style scoped lang="scss">
-  .container{
-    background-color: #fff;
-    min-height: 100vh;
-  }
 	.rec_detail{
 		padding: 30rpx;
-		overflow-y: scroll;
     padding-bottom: 100rpx;
 		.title{
 			font-size: 36rpx;

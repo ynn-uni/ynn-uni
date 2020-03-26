@@ -1,49 +1,27 @@
 <template>
-	<view class="home">
-    <cu-custom bgColor="bg-white">
-      <block slot="content">肿瘤医院</block>
-    </cu-custom>
-     <button open-type="openSetting" bindopensetting="callback">打开设置页</button>
-		<!-- <Meaasge></Meaasge> -->
-		<Swiper></Swiper>
-		
-		<Recruit></Recruit>
-		
-		<News></News>
-		
-	</view>
+  <view class="container home">
+    <button open-type="openSetting" bindopensetting="callback">打开设置页</button>
+    <Swiper></Swiper>
+    <Recruit></Recruit>
+    <News></News>
+  </view>
 </template>
 
 <script>
-	import Meaasge from "./components/message"
-	import Swiper from "./components/swiper"
-	import Recruit from "./components/recruit"
-	import News from "./components/news"
-	
-	export default {
-		data() {
-			return {
-				
-			}
-		},
-		components:{
-			Swiper,
-			Recruit,
-			News,
-			Meaasge
-		},
-		onLoad() {
+  import Swiper from './components/swiper'
+  import Recruit from './components/recruit'
+  import News from './components/news'
 
-		},
-		methods: {
-
-		}
-	}
+  export default {
+    data() {
+      return {}
+    },
+    components: {
+      Swiper,
+      Recruit,
+      News
+    },
+    onLoad() {},
+    methods: {}
+  }
 </script>
-
-<style lang="scss" scoped>
-	.home{
-		background-color: #fff;
-    min-height: 100vh;
-	}
-</style>

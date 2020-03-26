@@ -1,3 +1,8 @@
+.container {
+  min-height: 100vh;
+  background: #fff;
+}
+
 /* 行为相关颜色 */
 .color-primary {
   color: $uni-color-primary;
@@ -67,6 +72,6 @@
 }
 
 //自定义导航栏背景色
-.bg-default{
+.bg-default {
   background-color: #eee;
 }

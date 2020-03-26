@@ -1,12 +1,6 @@
 <template>
-  <view class="container bg-white">
-    <cu-custom :isBack="true" bgColor="bg-white">
-      <block slot="backText">返回</block>
-      <block slot="content">联系我们</block>
-    </cu-custom>
- 
+  <view class="container">
     <view class="contact flex justify-center">
-     
       <view>
         <view class="text-center">
           <image class="contact-image" src="../../static/images/login_logo.gif" />
@@ -20,36 +14,36 @@
         </view>
       </view>
     </view>
-   </view>
+  </view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {}
-		},
-		methods: {}
-	}
+  export default {
+    data() {
+      return {}
+    },
+    methods: {}
+  }
 </script>
 
 <style lang="scss" scoped>
-  .container{
+  .container {
     min-height: 100vh;
-  
-	.contact {
-		height: 100%;
-		padding-top: 200rpx;
-		.contact-image {
-			width: 430rpx;
-			height: 430rpx;
-			margin-bottom: 60rpx;
-			background-size: cover;
-		}
-		.contact-info {
-			margin: auto;
-			color: #737373;
-			line-height: 1.5em;
-		}
-	}
+
+    .contact {
+      height: 100%;
+      padding-top: 200rpx;
+      .contact-image {
+        width: 430rpx;
+        height: 430rpx;
+        margin-bottom: 60rpx;
+        background-size: cover;
+      }
+      .contact-info {
+        margin: auto;
+        color: #737373;
+        line-height: 1.5em;
+      }
+    }
   }
 </style>
