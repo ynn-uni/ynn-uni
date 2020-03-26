@@ -3,7 +3,10 @@
 		'uni-calendar-item--disable':weeks.disable,
 		'uni-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
 		'uni-calendar-item--checked':(calendar.fullDate === weeks.fullDate && !weeks.isDay) ,
-		'uni-calendar-item--multiple': weeks.multiple
+		'uni-calendar-item--multiple': weeks.multiple, 
+    'uni-calendar-item--info' : weeks.extraInfo.type === 'info',
+    'uni-calendar-item--success' : weeks.extraInfo.type === 'success',
+    'uni-calendar-item--error' : weeks.extraInfo.type === 'error'
 		}"
 	 @click="choiceDate(weeks)">
 		<view class="uni-calendar-item__weeks-box-item">
@@ -130,10 +133,14 @@
 		color: $uni-color-primary;
 	}
 
-	.uni-calendar-item--isDay {
-		background-color: $uni-color-primary;
-		opacity: 0.8;
-		color: #fff;
+	// .uni-calendar-item--isDay {
+	// 	background-color: $uni-color-primary;
+	// 	opacity: 0.8;
+	// 	color: #fff;
+	// }
+	// custom
+	.uni-calendar-item__weeks-box.uni-calendar-item--isDay {
+		border: 1px solid $uni-color-warning;
 	}
 
 	.uni-calendar-item--extra {
@@ -153,5 +160,21 @@
 		background-color: $uni-color-primary;
 		color: #fff;
 		opacity: 0.8;
+  }
+  
+  .uni-calendar-item--info {
+		background: #d8d8d8;
+	}
+  .uni-calendar-item--success {
+		background: $uni-color-primary;
+	}
+	.uni-calendar-item--error {
+		background: $uni-color-secondary
+	}
+	.uni-calendar-item--success .uni-calendar-item__weeks-box-text {
+		color: #fff;
+	}
+	.uni-calendar-item--error .uni-calendar-item__weeks-box-text {
+		color: #9b9b9b;
 	}
 </style>
