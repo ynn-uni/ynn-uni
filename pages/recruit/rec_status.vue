@@ -5,7 +5,7 @@
       <image v-if="status==1" src="../../static/icons/check-circle.png" mode />
       <image v-if="status==2" src="../../static/icons/close.png" mode />
       <view class="text" v-if="status==0">资料提交成功（正在审核）</view>
-      <view class="text" v-if="status==1||status==2">资料提交成功</view>
+      <view class="text" v-if="status==1||status==2">资料审核通过</view>
       <view class="text" v-if="status==2">您的条件不符合</view>
       <view class="text" v-if="status==0||status==1">工作人员会在2个工作日内电话联系您！</view>
       <view class="thank">感谢您对临床科研的支持与贡献！</view>
