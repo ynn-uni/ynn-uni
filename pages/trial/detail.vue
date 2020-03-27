@@ -1,7 +1,7 @@
 <template>
   <view class="container">
-    <view class="trail-detail">
-      <view class="detail-info flex">
+    <view class="trail-detail ">
+      <view class="detail-info flex justify-center align-center">
         <image class="detail-cover" src="../../static/images/home_new.png" />
         <view>
           <view class="detail-title">{{ trialDetail.project_info.title }}</view>
@@ -79,7 +79,7 @@
 <style lang="scss" scoped>
   .trail-detail {
     padding: 30rpx;
-
+    
     .detail-cover {
       width: 320rpx;
       height: 180rpx;

@@ -94,6 +94,9 @@
       .cu-item .action {
         width: 140rpx;
       }
+      .cu-avatar{
+        background-color: #fff;
+      }
     }
   }
 </style>

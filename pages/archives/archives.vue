@@ -241,6 +241,7 @@
 
   .archives::v-deep {
     .text-placeholder {
+      width: 370rpx;
       font-size: 28rpx;
       text-align: left;
       color: #808080;

@@ -50,6 +50,7 @@
 
 <style lang="scss" scoped>
   .message-detail {
+    background-color: #F1F1F1;
     .cu-item > .main {
       max-width: calc(100% - 200rpx);
     }

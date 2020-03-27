@@ -73,7 +73,6 @@
     methods: {
       initData(id) {
         getRecruitDetails({ id }).then(res => {
-          console.log(res, baseUrl)
           this.data = res.data
           this.data.cover = baseUrl + '/' + this.data.cover
         })
@@ -94,7 +93,7 @@
       },
       call() {
         uni.makePhoneCall({
-          phoneNumber: '4008004268'
+          phoneNumber: this.data.tel
         })
       },
       handelApplication() {
