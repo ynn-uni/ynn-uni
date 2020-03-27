@@ -12,20 +12,17 @@
       <view class="detail-timeline">
         <view class="cu-timeline">
           <view class="cu-item" v-for="(item, index) in trialDetail.examine" :key="index">
-            <view>
-              <view class="timeline-title text-color">{{ item.title }}</view>
-              <view class="timeline-info text-grey">{{ item.describe }}</view>
-              <view
-                class="timeline-status"
-                :class="classNameList[item.status]"
-                v-if="index>0&&trialDetail.examine[index-1].status==1"
-              >「{{ item.status | statusFilter}}」</view>
-              <view
-                class="timeline-status"
-                :class="classNameList[item.status]"
-                v-else-if="index==0"
-              >「{{ item.status | statusFilter}}」</view>
-            </view>
+           <view >
+             <view class="timeline-title text-color">{{ item.title }}</view>
+             <view class="timeline-info text-grey">{{ item.describe }}</view>
+             <view class="timeline-status" :class="classNameList[item.status]" v-if="index>0&&trialDetail.examine[index-1].status==1">
+             「{{ item.staStr}}」
+             </view>
+             <view class="timeline-status" :class="classNameList[item.status]" v-else-if="index==0">
+             「{{ item.staStr}}」
+             </view>
+           </view>
+           
           </view>
         </view>
       </view>
@@ -34,45 +31,46 @@
 </template>
 
 <script>
-  import { getEnrollDetails } from '../../apis/index.js'
-  export default {
-    name: 'TrailDetail',
-    data() {
-      return {
-        trialId: null,
-        trialDetail: {},
-        trialTimeline: [],
-        classNameList: ['default', 'success', 'error']
-      }
-    },
-    filters: {
-      statusFilter(val) {
-        switch (val) {
-          case 0:
-            return '审核未通过'
-          case 1:
-            return '审核通过'
-          default:
-            return '待审核'
-        }
-      }
-    },
-    onLoad(option) {
-      this.handleQuery(option)
-    },
-    mounted() {
-      this.getTrialDetail()
-    },
-    methods: {
-      handleQuery(option) {
-        this.trialId = option.id
-      },
-      getTrialDetail() {
-        let id = this.trialId
-        getEnrollDetails({ id }).then(res => {
-          this.trialDetail = res.data
-          this.trialDetail.created_at = this.trialDetail.created_at.split(' ')[0]
+  import {getEnrollDetails} from '../../apis/index.js'
+	export default {
+		name: 'TrailDetail',
+		data() {
+			return {
+				trialId: null,
+				trialDetail: {},
+				trialTimeline: [],
+				classNameList: ['default', 'success', 'error']
+			}
+		},
+		onLoad(option) {
+			this.handleQuery(option)
+		},
+		mounted() {
+			this.getTrialDetail()
+		},
+		methods: {
+			handleQuery(option) {
+				this.trialId = option.id
+			},
+			getTrialDetail() {
+        let id=this.trialId
+        getEnrollDetails({id}).then((res)=>{
+          this.trialDetail=this.filterStatus(res.data)
+          this.trialDetail.created_at=this.trialDetail.created_at.split(' ')[0]
         })
+      },
+      filterStatus(data){
+        if(!data.examine) return
+        data.examine.forEach(val=>{
+          if(val.status==0){
+            val.staStr='待审核'
+          }else if(val.status==1){
+            val.staStr='审核通过'
+          }else{
+            val.staStr='审核未通过'
+          }
+        })
+        return data
       }
     }
   }
