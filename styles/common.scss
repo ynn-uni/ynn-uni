@@ -4,8 +4,12 @@
 }
 
 /* 行为相关颜色 */
+.line-primary,
 .color-primary {
   color: $uni-color-primary;
+}
+.line-primary::after {
+  border-color: $uni-color-primary;
 }
 .color-secondary {
   color: $uni-color-secondary;
@@ -71,7 +75,18 @@
   font-size: $uni-font-size-lg;
 }
 
-//自定义导航栏背景色
-.bg-default {
-  background-color: #eee;
+.cu-btn.bg-primary {
+  color: #fff;
+}
+
+// 定义主色
+switch.primary[checked] .wx-switch-input,
+checkbox.primary[checked] .wx-checkbox-input,
+radio.primary[checked] .wx-radio-input,
+switch.primary.checked .uni-switch-input,
+checkbox.primary.checked .uni-checkbox-input,
+radio.primary.checked .uni-radio-input {
+  background-color: $uni-color-primary !important;
+  border-color: $uni-color-primary !important;
+  color: #ffffff !important;
 }
