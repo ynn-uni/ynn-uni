@@ -1,4 +1,4 @@
-import {getAction,postAction} from '@/utils/request.js'
+import {getAction,postAction} from '@/utils/request'
 
 export function loginOrRegister(data = {}) {
   return postAction('/Apis/Member/loginWithWechat', data);
@@ -28,7 +28,10 @@ export const getEnrollDetails = (data = {}) => {
 }
 //健康档案  
 export const getHealthRecords = (data = {}) => {
-  return postAction(`/Apis/Trial/getTrialDetailsInMonth`, data)
+  return getAction(`/Apis/Trial/getTrialDetailsInMonth`, data)
+}
+export const postHealthRecords = (data = {}) => {
+  return postAction(`/Apis/Trial/setTrialData`, data)
 }
 //传入参数{truename,phone,birthday,sex,height,weight}
 export const setUserInfo = (data = {}) => {
