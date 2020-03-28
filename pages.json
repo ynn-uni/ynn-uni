@@ -63,7 +63,6 @@
         "navigationBarTitleText": "新闻详情"
       }
     },
-
     {
       "path": "pages/archives/archives",
       "style": {
@@ -103,7 +102,8 @@
     {
       "path": "pages/message/detail",
       "style": {
-        "navigationBarTitleText": "消息通知"
+        "navigationBarTitleText": "消息通知",
+        "navigationBarBackgroundColor": "#f1f1f1"
       }
     },
     {
@@ -116,6 +116,12 @@
       "path": "pages/records/records",
       "style": {
         "navigationBarTitleText": "健康记录"
+      }
+    },
+    {
+      "path": "pages/records/record_form",
+      "style": {
+        "navigationBarTitleText": "记录上传"
       }
     }
   ],
@@ -159,14 +165,14 @@
     ]
   },
   "condition": {
-    //模式配置，仅开发期间生效
-    // "current": 0, //当前激活的模式(list 的索引项)
-    // "list": [
-    //   {
-    //     "name": "my", //模式名称
-    //     "path": "pages/my/my", //启动页面，必选
-    //     "query": "id=1" //启动参数，在页面的onLoad函数里面得到
-    //   }
-    // ]
+    // 模式配置，仅开发期间生效
+    "current": 0, //当前激活的模式(list 的索引项)
+    "list": [
+      {
+        "name": "my", //模式名称
+        "path": "pages/records/records", //启动页面，必选
+        "query": "id=1" //启动参数，在页面的onLoad函数里面得到
+      }
+    ]
   }
 }

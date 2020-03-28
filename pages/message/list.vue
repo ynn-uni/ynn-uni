@@ -9,8 +9,16 @@
       >
         <view class="cu-list menu-avatar">
           <view class="cu-item" @click="handleClick(item.id)">
-            <image v-if="item.status" class="cu-avatar round" src="../../static/icons/close.png" />
-            <image v-else class="cu-avatar round" src="../../static/icons/check-circle.png" />
+            <image
+              v-if="item.status"
+              class="cu-avatar round bg-white"
+              src="../../static/icons/close.png"
+            />
+            <image
+              v-else
+              class="cu-avatar round bg-white"
+              src="../../static/icons/check-circle.png"
+            />
 
             <view class="content padding-tb-sm">
               <view class="text-cut">{{ item.title }}</view>
