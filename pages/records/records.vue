@@ -35,6 +35,7 @@
     },
     data() {
       return {
+        trialInfo: null, // 试验信息id，start，end，title
         recordList: [
           {
             date: '2020-03-10',
@@ -51,6 +52,7 @@
             ]
           }
         ],
+        recordForm: [],
         selectRecords: [],
         selectedDay: null
       }
@@ -73,8 +75,14 @@
       getHealthRecords() {
         getHealthRecords().then(res => {
           console.log(res)
-          const { date } = res.data
-
+          const { date, id, content, start, end, title } = res.data
+          this.trialInfo = {
+            id,
+            start,
+            end,
+            title
+          }
+          this.recordForm = content
           this.recordList = this.formatData(date)
         })
       },
@@ -86,7 +94,11 @@
         this.selectedDay = evt.fulldate
       },
       handleAdd() {
-        this.$refs.schedulePopup.open()
+        const { id } = this.trialInfo
+        const form = encodeURIComponent(JSON.stringify(this.recordForm))
+        uni.navigateTo({
+          url: `/pages/records/record_form?id=${id}&form=${form}`
+        })
       },
       formatData(data) {
         const result = []
@@ -94,8 +106,8 @@
           const length = data[key].length
           result.push({
             date: key,
-            // info: length ? '已上传' : '未上传',
-            type: key === '2020-03-29' ? 'error' : 'info',
+            // TODO 判断状态
+            type: length === '2020-03-29' ? 'error' : 'info',
             data: data[key]
           })
         }
